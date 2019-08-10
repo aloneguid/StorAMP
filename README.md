@@ -2,10 +2,10 @@
 
 StorAMP is a FREE cloud storage explorer that supports variety of cloud providers:
 - Azure Blob Storage
-- Azure Data Lake (Gen 1)
-- Azure Data Lake (Gen 2) **coming soon**
-- Amazon S3
-- Azure Databricks DBFS
+- Azure Data Lake (Gen 1 and Gen 2)
+- Azure Data Lake
+- Amazon S3 buckets
+- Azure Databricks DBFS (read-only mode, read-write support is coming)
 - Azure Key Vault
 - Local disk
 - Temporary storage

@@ -44,6 +44,12 @@ Want to suggest another feature? Please raise an issue here.
 
 # Release Log
 
+## v1.2.4 (29/08/2019)
+- **Enable rapid jump to any folder in the path by editing the path and pressing "enter" (like in Windows Explorer)**
+- Stability improvements in file viewer
+- Fixed bug with toolbar icon sizing
+- Fixed the picture viewer not scaling up images when they were too small
+
 ## v1.0.2
 - "about" page got a bit more style and information.
 - minor bugfixes

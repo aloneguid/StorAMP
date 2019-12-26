@@ -41,15 +41,3 @@ Same goes for copying files between storage accounts - simply drag'n'drop.
 ![](img/copy-between-accounts.gif)
 
 Want to suggest another feature? Please raise an issue here.
-
-# Release Log
-
-## v1.0.2
-- "about" page got a bit more style and information.
-- minor bugfixes
-
-## v1.0.1 (06/08/2019)
-Mostly adjustments to Microsoft Store publishing.
-
-## v1.0.0 (05/08/2019)
-The first release to Microsoft Store, very early preview

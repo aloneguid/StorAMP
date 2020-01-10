@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="StorAmp.Wpf.Wpf.AboutPane"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CloudExplorer.Wpf.Wpf"
+             Margin="10"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+   <UserControl.Resources>
+      <Style TargetType="Hyperlink">
+         <Setter Property="Foreground" Value="Yellow"/>
+      </Style>
+   </UserControl.Resources>
+   <FlowDocumentScrollViewer Focusable="False">
+      <FlowDocument IsHyphenationEnabled="True"
+                    FontFamily="Segoe UI" FontSize="13">
+         <Section Name="Heading">
+
+            <Paragraph TextAlignment="Center">
+               <Image Source="../Media/app.png" Width="200"/>
+            </Paragraph>
+            
+            <Paragraph>
+               StorAmp is a
+               <Bold>Native</Bold> Windows application to effectively work with cloud storage providers. It doesn't use JavaScript, Electron or all that madness that runs 5 instances of Chrome on your machine to display a simply button. Raw power, yeah!
+            </Paragraph>
+
+            <Paragraph>
+               You can read full documentation on
+               <Bold>StorAMP</Bold> features on
+               <Hyperlink NavigateUri="https://github.com/aloneguid/StorAMP" RequestNavigate="Nav">this webpage</Hyperlink>. To report any issues or suggest a new feature please don't hesitage to
+               <Hyperlink NavigateUri="https://github.com/aloneguid/StorAMP/issues" RequestNavigate="Nav">open an issue here</Hyperlink>.
+            </Paragraph>
+
+            <Paragraph>
+               Thanks and good luck!
+            </Paragraph>
+
+         </Section>
+      </FlowDocument>
+   </FlowDocumentScrollViewer>
+</UserControl>

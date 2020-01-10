@@ -1,0 +1,147 @@
+﻿<mah:MetroWindow
+    x:Class="CloudExplorer.Wpf.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:StorAmp.Wpf.Controls"
+    xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+    xmlns:core="clr-namespace:StorAmp.Core;assembly=StorAmp.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tasks="clr-namespace:StorAmp.Wpf.Wpf.Tasks"
+    xmlns:viewModels="clr-namespace:StorAmp.Core.ViewModel;assembly=StorAmp.Core"
+    xmlns:views="clr-namespace:StorAmp.Wpf.Wpf"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
+    BorderThickness="1"
+    DataContext="{DynamicResource vm}"
+    GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
+    Icon="Media/app.png"
+    IconBitmapScalingMode="HighQuality"
+    ResizeMode="CanResizeWithGrip"
+    ShowIconOnTitleBar="True"
+    SnapsToDevicePixels="True"
+    TextOptions.TextFormattingMode="Display"
+    TitleAlignment="Center"
+    mc:Ignorable="d">
+    <mah:MetroWindow.Resources>
+        <viewModels:MainViewModel x:Key="vm" />
+        <conv:StorageTypeIconConverter x:Key="stic" />
+        <conv:GenericConverter x:Key="gc" />
+    </mah:MetroWindow.Resources>
+
+    <!--#region Header Buttons-->
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button
+                x:Name="SettingsHeaderButton"
+                Click="SettingsFlyoutHeaderButton_Click"
+                ToolTip="Configuration">
+                <StackPanel Orientation="Horizontal">
+                    <controls:WinUISymbol Symbol="Setting" />
+                </StackPanel>
+            </Button>
+            <Button
+                Click="AboutFlyoutHeaderButton_Click"
+                ToolTip="about">
+                <StackPanel Orientation="Horizontal">
+                    <controls:WinUISymbol Symbol="Help" />
+                </StackPanel>
+            </Button>
+            <Button
+                Click="ShowReleaseNotes_Click"
+                ToolTip="Release Notes">
+                <StackPanel Orientation="Horizontal">
+                    <controls:WinUISymbol Symbol="Document" />
+                </StackPanel>
+            </Button>
+            <Button
+                Click="FeedbackHeaderButton_Click"
+                ToolTip="Report and issue or suggest feature">
+                <StackPanel Orientation="Horizontal">
+                    <controls:WinUISymbol Symbol="Emoji2" />
+                </StackPanel>
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+    <!--#endregion-->
+
+    <!--#region Flyouts-->
+    <mah:MetroWindow.Flyouts>
+        <mah:FlyoutsControl>
+            <mah:Flyout
+                x:Name="settingsFlyout"
+                Width="300"
+                Header="Settings"
+                IsPinned="False"
+                Position="Right">
+                <views:SettingsPane Padding="10,0,10,0" />
+            </mah:Flyout>
+            <mah:Flyout
+                x:Name="aboutFlyout"
+                Width="400"
+                Header="About"
+                IsPinned="False"
+                Position="Right"
+                Theme="Accent">
+                <views:AboutPane />
+            </mah:Flyout>
+        </mah:FlyoutsControl>
+    </mah:MetroWindow.Flyouts>
+    <!--#endregion-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding Source={x:Static core:GlobalSettings.Default}, Path=SideBarColumnWidth, Mode=TwoWay}" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <views:SideBar
+                Grid.Column="0"
+                ConnectedAccountDoubleTapped="SideBar_ConnectedAccountDoubleTapped" />
+
+            <GridSplitter
+                Grid.Column="1"
+                Style="{StaticResource vertical}" />
+
+            <Grid Grid.Column="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <!--  virtual tabs  -->
+                <views:AccountTabs />
+
+                <Grid
+                    x:Name="NonRecycledTabs"
+                    Grid.Row="1"
+                    Margin="0,0,0,0" />
+
+            </Grid>
+
+        </Grid>
+
+        <StatusBar Grid.Row="1">
+            <StatusBarItem>
+                <tasks:BackgroundTasksStatus />
+            </StatusBarItem>
+            <StatusBarItem>
+                <views:ClipboardStatus />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+
+
+</mah:MetroWindow>

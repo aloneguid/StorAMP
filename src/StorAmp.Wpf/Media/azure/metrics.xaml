@@ -1,0 +1,53 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <DrawingImage.Drawing>
+        <DrawingGroup ClipGeometry="M0,0 V18 H18 V0 H0 Z">
+            <DrawingGroup Opacity="1">
+                <GeometryDrawing
+                    Brush="#FFB796F9"
+                    Geometry="F1 M18,18z M0,0z M14.726,1.622L10.738,8.722 6.521,4.423 2.165,10.057 3.194,10.859 6.638,6.405 11.023,10.877 15.861,2.265 14.726,1.622z" />
+                <GeometryDrawing Geometry="F1 M18,18z M0,0z M8.211,5.392A1.639,1.639,0,1,1,6.555,3.763A1.642,1.642,0,0,1,8.211,5.392z M11.005,7.859A1.646,1.646,0,1,0,12.661,9.487A1.642,1.642,0,0,0,11.005,7.859z M15.136,0.5A1.646,1.646,0,1,0,16.792,2.128A1.643,1.643,0,0,0,15.136,0.5z M2.83,8.569A1.646,1.646,0,1,0,4.486,10.2A1.644,1.644,0,0,0,2.83,8.569z">
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush MappingMode="Absolute" Opacity="1" SpreadMethod="Pad" StartPoint="7.037,1.183" EndPoint="11.248,11.903">
+                            <GradientStop Offset="0" Color="#FFB77AF4" />
+                            <GradientStop Offset="0.40299999999999997" Color="#FF9659E8" />
+                            <GradientStop Offset="0.767" Color="#FF7F42DF" />
+                            <GradientStop Offset="0.997" Color="#FF773ADC" />
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF0078D4">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry
+                            RadiusX="0.283"
+                            RadiusY="0.283"
+                            Rect="5.67,9.918,2.576,7.582" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF005BA1">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry
+                            RadiusX="0.283"
+                            RadiusY="0.283"
+                            Rect="9.78,12.542,2.576,4.958" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF005BA1">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry
+                            RadiusX="0.283"
+                            RadiusY="0.283"
+                            Rect="13.891,7.381,2.576,10.119" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF5EA0EF">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry
+                            RadiusX="0.283"
+                            RadiusY="0.283"
+                            Rect="1.559,12.542,2.576,4.958" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingImage.Drawing>
+</DrawingImage>

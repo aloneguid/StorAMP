@@ -1,0 +1,134 @@
+﻿<UserControl
+    x:Class="StorAmp.Wpf.Wpf.SettingsPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:StorAmp.Core;assembly=StorAmp.Core"
+    xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:StorAmp.Core.ViewModel;assembly=StorAmp.Core"
+    xmlns:xx="clr-namespace:StorAmp.Wpf.MarkupExtensions"
+    d:DesignHeight="450"
+    d:DesignWidth="200"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <vm:SettingsViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <conv:GenericConverter x:Key="gc" />
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <GroupBox
+                Header="Look and Feel"
+                Style="{DynamicResource NarrowGroup}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
+                        Text="Theme"
+                        Visibility="Collapsed" />
+                    <ComboBox
+                        ItemsSource="{Binding BaseColorNames}"
+                        SelectedValue="{Binding ActiveBaseColor}" />
+
+                    <TextBlock Text="Accent" />
+                    <ComboBox
+                        ItemsSource="{Binding ColorSchemes}"
+                        SelectedValue="{Binding ActiveColorScheme}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock
+                                        Padding="20,0,5,0"
+                                        Text="{Binding Name}" />
+                                    <Rectangle
+                                        Width="15"
+                                        Height="15"
+                                        HorizontalAlignment="Left"
+                                        Fill="{Binding Color, Converter={StaticResource gc}}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ComboBox.ItemContainerStyle>
+                    </ComboBox>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox
+                Header="General"
+                Style="{DynamicResource NarrowGroup}">
+                <StackPanel Orientation="Vertical">
+                    <CheckBox
+                        Content="Open task pane when task is added"
+                        IsChecked="{Binding Source={x:Static c:GlobalSettings.Default}, Path=OpenTaskPaneOnTaskAdded, Mode=TwoWay}"
+                        ToolTip="Actions such as copy, delete, etc. are performed in the background as tasks. Task pane will be open when a task starts so that you are aware of the progress. Untick this so they are performed silently." />
+
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox
+                Header="Blob List"
+                Style="{DynamicResource NarrowGroup}">
+                <StackPanel Orientation="Vertical">
+                    <CheckBox
+                        Content="Simple, human readable dates"
+                        IsChecked="{Binding Source={x:Static c:GlobalSettings.Default}, Path=HumanisedBlobChangeDates, Mode=TwoWay}"
+                        ToolTip="When enabled, dates will be displyed in a simple format i.e. 'yesterday', 'an hour ago' and so on. Otherwise dates are dates. After chaning this you need to refresh the file list." />
+
+                    <CheckBox
+                        Content="Alternate row colours"
+                        IsChecked="{Binding Source={x:Static c:GlobalSettings.Default}, Path=AlternateRowColours, Mode=TwoWay}" />
+
+                    <CheckBox
+                        Content="Show folders first"
+                        IsChecked="{Binding Source={x:Static c:GlobalSettings.Default}, Path=FoldersFirst, Mode=TwoWay}" />
+
+                    <CheckBox
+                        Content="Single click navigation"
+                        IsChecked="{Binding Source={x:Static c:GlobalSettings.Default}, Path=SingleClickNavigation, Mode=TwoWay}" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Style="{DynamicResource NarrowGroup}">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="15"
+                            Height="15"
+                            Margin="0,0,5,0"
+                            Source="{xx:XamlImage azure/logo}" />
+                        <TextBlock Text="MICROSOFT AZURE" />
+                    </StackPanel>
+                </GroupBox.Header>
+                <StackPanel Orientation="Vertical">
+                    <CheckBox
+                        Content="Group resources by resource group"
+                        IsChecked="{Binding Source={x:Static c:GlobalSettings.Default}, Path=AzureGroupResourcesByResourceGroup, Mode=TwoWay}" />
+                    <CheckBox
+                        Content="Show empty subscriptions"
+                        IsChecked="{Binding Source={x:Static c:GlobalSettings.Default}, Path=AzureShowEmptySubscriptions, Mode=TwoWay}" />
+
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox
+                Header="System Info"
+                Style="{DynamicResource NarrowGroup}">
+                <StackPanel Orientation="Vertical">
+                    <Label>Configuration Folder</Label>
+                    <TextBox
+                        mah:TextBoxHelper.SelectAllOnFocus="True"
+                        IsReadOnly="True"
+                        MouseDoubleClick="TextBox_MouseDoubleClick"
+                        Text="{Binding ConfigFolderPath}"
+                        ToolTip="Where configuration is stored. Double-click to open in Windows Explorer." />
+
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

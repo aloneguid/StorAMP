@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SyntaxDefinition name="Kusto" extensions=".kusto" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+
+   <!-- that's cool: https://github.com/icsharpcode/AvalonEdit/blob/master/ICSharpCode.AvalonEdit/Highlighting/Resources/CSharp-Mode.xshd -->
+   
+   
+   <Color name="Comment" foreground="Green" exampleText="// comment" />
+   <Color name="String" foreground="Blue" exampleText="string text = &quot;Hello, World!&quot;"/>
+   <Color name="SourceKeywords" fontWeight="bold" foreground="Red" exampleText="traces, events etc."/>
+
+   <RuleSet>
+      
+      <Span color="Comment">
+         <Begin>//</Begin>
+      </Span>
+
+      <Span color="String">
+         <Begin>"</Begin>
+         <End>"</End>
+         <RuleSet>
+            <!-- span for escape sequences -->
+            <Span begin="\\" end="."/>
+         </RuleSet>
+      </Span>
+
+      <Keywords color="SourceKeywords">
+         <Word>traces</Word>
+         <Word>events</Word>
+      </Keywords>
+      
+   </RuleSet>
+</SyntaxDefinition>

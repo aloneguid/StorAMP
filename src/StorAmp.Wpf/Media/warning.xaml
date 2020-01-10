@@ -1,0 +1,22 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <DrawingImage.Drawing>
+        <DrawingGroup ClipGeometry="M0,0 V9 H9 V0 H0 Z">
+            <DrawingGroup Opacity="1">
+                <GeometryDrawing
+                    Brush="#FFFF8C00"
+                    Geometry="F1 M9,9z M0,0z M8.267,8L0.733,8C0.133,8,-0.183,7.377,0.113,6.871L2.014,3.53 3.896,0.384C4.198,-0.123,4.799,-0.13,5.093,0.376L7.001,3.65 8.883,6.879C9.183,7.383,8.881,8,8.267,8z" />
+                <GeometryDrawing Brush="#FFFFFFFF">
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry
+                            Center="4.5,6.178"
+                            RadiusX="0.615"
+                            RadiusY="0.615" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing
+                    Brush="#FFFFFFFF"
+                    Geometry="F1 M9,9z M0,0z M4.623,2.428L3.98,2.428 4.144,5.278 4.918,5.278 5.083,2.428z" />
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingImage.Drawing>
+</DrawingImage>

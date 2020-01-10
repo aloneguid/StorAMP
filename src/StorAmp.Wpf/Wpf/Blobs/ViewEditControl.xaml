@@ -1,0 +1,78 @@
+﻿<UserControl
+    x:Class="CloudExplorer.Wpf.Wpf.ViewEditControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:StorAmp.Wpf.Controls"
+    xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:StorAmp.Core.ViewModel;assembly=StorAmp.Core"
+    Padding="30"
+    d:DataContext="{d:DesignInstance vm:ViewEditControlViewModel,
+                                     IsDesignTimeCreatable=True}"
+    d:DesignHeight="250"
+    d:DesignWidth="400"
+    Background="{DynamicResource MahApps.Brushes.Accent}"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <conv:GenericConverter x:Key="gc" />
+        <conv:FileSizeConverter x:Key="fs" />
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding
+            Key="Esc"
+            Command="{Binding GoBackCommand}" />
+    </UserControl.InputBindings>
+    <Grid Background="{DynamicResource MahApps.Brushes.White}">
+
+        <Grid
+            x:Name="ViewerContent"
+            Grid.Row="1"
+            Visibility="{Binding ErrorText, Converter={StaticResource gc}, ConverterParameter=-1}" />
+
+        <Grid>
+            <!--  error message  -->
+            <Grid Visibility="{Binding ErrorText, Converter={StaticResource gc}}">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Failed to Preview" />
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        FontStyle="Italic"
+                        Foreground="Red"
+                        Text="{Binding ErrorText}" />
+                </StackPanel>
+            </Grid>
+
+            <!--  loading indicator  -->
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical"
+                Visibility="{Binding IsLoading, Converter={StaticResource gc}}">
+                <mah:ProgressRing />
+                <TextBlock Text="Loading..." />
+            </StackPanel>
+
+        </Grid>
+
+        <Button
+            x:Name="CloseButton"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            BorderThickness="0"
+            Command="{Binding GoBackCommand}"
+            ToolTip="Close">
+            <controls:WinUISymbol Symbol="Clear" />
+        </Button>
+
+    </Grid>
+
+</UserControl>

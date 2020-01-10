@@ -1,0 +1,229 @@
+﻿<UserControl
+    x:Class="StorAmp.Wpf.Wpf.AccountsPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+    xmlns:ctrl="clr-namespace:StorAmp.Wpf.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:modela="clr-namespace:StorAmp.Core.Model.Account;assembly=StorAmp.Core"
+    d:DesignHeight="650"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <conv:StorageTypeIconConverter x:Key="stic" />
+        <conv:GenericConverter x:Key="gc" />
+
+        <DataTemplate DataType="{x:Type modela:AccountField}">
+            <StackPanel
+                Margin="0,0,0,5"
+                Orientation="Vertical">
+                <TextBlock Text="{Binding DisplayName}" />
+                <TextBox
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type modela:HiddenAccountField}">
+            <Grid />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type modela:TextAreaAccountField}">
+            <StackPanel
+                Margin="0,0,0,5"
+                Orientation="Vertical">
+                <TextBlock Text="{Binding DisplayName}" />
+                <TextBox
+                    AcceptsReturn="True"
+                    MinLines="5"
+                    Text="{Binding DisplayValue, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="NoWrap" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type modela:DropDownAccountField}">
+            <StackPanel
+                Margin="0,0,0,5"
+                Orientation="Vertical">
+                <TextBlock Text="{Binding DisplayName}" />
+                <ComboBox
+                    BorderThickness="1"
+                    ItemsSource="{Binding Values}"
+                    SelectedItem="{Binding Value}" />
+            </StackPanel>
+        </DataTemplate>
+
+    </UserControl.Resources>
+    <ScrollViewer>
+
+
+        <Grid>
+            <StackPanel
+                Grid.ColumnSpan="2"
+                Orientation="Vertical">
+                <GroupBox
+                    Header="Available"
+                    IsEnabled="{Binding IsAccountDirty, Converter={StaticResource gc}, ConverterParameter=-1}"
+                    Style="{DynamicResource NarrowGroup}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <ListBox
+                            ItemsSource="{Binding AvailableAccounts}"
+                            SelectedItem="{Binding SelectedAccount}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel
+                                        Height="20"
+                                        Margin="1,0,5,0"
+                                        Orientation="Horizontal">
+                                        <Image
+                                            Width="20"
+                                            Height="20"
+                                            Margin="0,0,5,0"
+                                            Source="{Binding Converter={StaticResource stic}}" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            Text="{Binding DisplayName}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <StackPanel
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+                            <Button
+                                BorderThickness="0"
+                                Command="{Binding MoveUpCommand}"
+                                ToolTip="Move up in hierarchy">
+                                <ctrl:WinUISymbol Symbol="Upload" />
+                            </Button>
+                            <Button
+                                Margin="0,5,0,0"
+                                BorderThickness="0"
+                                Command="{Binding MoveDownCommand}"
+                                ToolTip="Move down in hierarchy">
+                                <ctrl:WinUISymbol Symbol="Download" />
+                            </Button>
+                            <Controls:DropDownButton
+                                Margin="0,5,0,0"
+                                BorderThickness="0"
+                                ItemsSource="{Binding AccountWorkers}">
+                                <Controls:DropDownButton.Content>
+                                    <ctrl:WinUISymbol Symbol="Add" />
+                                </Controls:DropDownButton.Content>
+                                <Controls:DropDownButton.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Height="20">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Image
+                                                Width="20"
+                                                Height="20"
+                                                Margin="-25,0,0,0"
+                                                Source="{Binding Converter={StaticResource stic}}" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Padding="5,0,0,0"
+                                                VerticalAlignment="Center"
+                                                FontSize="13"
+                                                Text="{Binding DisplayName}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </Controls:DropDownButton.ItemTemplate>
+                                <Controls:DropDownButton.ItemContainerStyle>
+                                    <Style
+                                        BasedOn="{StaticResource {x:Type MenuItem}}"
+                                        TargetType="MenuItem">
+                                        <!--<Setter Property="Header" Value="{Binding DisplayName}"/>-->
+                                        <Setter Property="Command" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.DataContext.AddCommand}" />
+                                        <Setter Property="CommandParameter" Value="{Binding}" />
+                                    </Style>
+                                </Controls:DropDownButton.ItemContainerStyle>
+
+                            </Controls:DropDownButton>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox
+                    Header="Details"
+                    Style="{DynamicResource NarrowGroup}">
+                    <StackPanel Orientation="Vertical">
+
+                        <TextBlock Text="Display Name" />
+                        <TextBox
+                            Margin="0,0,0,10"
+                            Text="{Binding SelectedAccount.DisplayName, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <StackPanel
+                            Orientation="Vertical"
+                            Visibility="{Binding HasConnectionTypeOptions, Converter={StaticResource gc}}">
+                            <TextBlock Text="Connect With" />
+                            <ComboBox
+                                BorderThickness="1"
+                                DisplayMemberPath="DisplayName"
+                                ItemsSource="{Binding ConnectionTypes}"
+                                SelectedItem="{Binding SelectedConnectionType}" />
+                        </StackPanel>
+
+                        <!--  list of account specific fields  -->
+                        <ItemsControl ItemsSource="{Binding AccountFields}" />
+
+                        <StackPanel
+                            Margin="0,5,0,0"
+                            Orientation="Horizontal">
+                            <Button
+                                Command="{Binding UpdateCommand}"
+                                Content="save" />
+
+                            <Button
+                                Margin="5,0,0,0"
+                                Command="{Binding TestCommand}">
+                                <StackPanel
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                                    <Controls:ProgressRing
+                                        Width="15"
+                                        Height="15"
+                                        Visibility="{Binding IsValidating, Converter={StaticResource gc}}" />
+                                    <Label
+                                        Padding="0"
+                                        Content="VALIDATE" />
+                                </StackPanel>
+                            </Button>
+
+                            <Button
+                                Margin="5,0,0,0"
+                                Command="{Binding DeleteCommand}"
+                                Content="remove" />
+                        </StackPanel>
+
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            Orientation="Vertical">
+                            <TextBlock
+                                Foreground="Red"
+                                Text="{Binding ValidationError}"
+                                ToolTip="{Binding ValidationErrorDetails}" />
+                        </StackPanel>
+
+                    </StackPanel>
+                </GroupBox>
+
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

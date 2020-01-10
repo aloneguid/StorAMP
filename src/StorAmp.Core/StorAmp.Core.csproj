@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup>
+      <TargetFramework>netstandard2.1</TargetFramework>
+      <LangVersion>latest</LangVersion>
+   </PropertyGroup>
+
+   <ItemGroup>
+     <None Remove="releasenotes.txt" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <EmbeddedResource Include="releasenotes.txt" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Config.Net" Version="4.14.20" />
+      <PackageReference Include="Microsoft.Azure.Management.Fluent" Version="1.30.0" />
+      <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="Refit" Version="5.0.23" />
+     <PackageReference Include="Serilog" Version="2.9.0" />
+     <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="3.0.4" />
+     <PackageReference Include="Serilog.Sinks.Trace" Version="2.1.0" />
+     <PackageReference Include="Humanizer.Core" Version="2.7.9" />
+      <PackageReference Include="Storage.Net" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Amazon.Aws" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Ftp" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Gcp.CloudStorage" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Microsoft.Azure.DataLake.Storage.Gen1" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Microsoft.Azure.EventHub" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Microsoft.Azure.KeyVault" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Microsoft.Azure.Databricks.Dbfs" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Microsoft.Azure.Queues" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Microsoft.Azure.Storage.Blobs" Version="9.2.0" />
+      <PackageReference Include="Storage.Net.Microsoft.Azure.Storage.Files" Version="9.2.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <Compile Update="Strings.Designer.cs">
+         <DesignTime>True</DesignTime>
+         <AutoGen>True</AutoGen>
+         <DependentUpon>Strings.resx</DependentUpon>
+      </Compile>
+   </ItemGroup>
+
+   <ItemGroup>
+      <EmbeddedResource Update="Strings.resx">
+         <Generator>ResXFileCodeGenerator</Generator>
+         <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+   </ItemGroup>
+
+   <ItemGroup>
+     <Folder Include="Logging\" />
+   </ItemGroup>
+
+</Project>

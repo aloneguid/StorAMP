@@ -1,0 +1,169 @@
+﻿<UserControl
+    x:Class="StorAmp.Wpf.Wpf.Tasks.BackgroundTasksStatus"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:StorAmp.Wpf.Controls"
+    xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:StorAmp.Wpf.Wpf.Tasks"
+    xmlns:local2="clr-namespace:StorAmp.Wpf.Wpf"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shared="clr-namespace:StorAmp.Wpf"
+    xmlns:vm="clr-namespace:StorAmp.Core.ViewModel;assembly=StorAmp.Core"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <vm:TaskListViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <conv:GenericConverter x:Key="gc" />
+        <shared:BindingProxy
+            x:Key="proxy"
+            Data="{Binding}" />
+    </UserControl.Resources>
+    <StackPanel
+        Name="Details"
+        Focusable="False"
+        Orientation="Horizontal">
+        <TextBlock ToolTip="{Binding ShortStatusText}">
+            <Hyperlink Command="{Binding ShowDetailsCommand}">
+                <TextBlock
+                    Style="{DynamicResource tbb}"
+                    Text="&#xE7C4;" />
+                <TextBlock
+                    Text="{Binding Tasks.Count}"
+                    Visibility="{Binding HasTasks, Converter={StaticResource gc}}" />
+                <mah:MetroProgressBar
+                    MinWidth="100"
+                    VerticalAlignment="Center"
+                    Foreground="{DynamicResource MahApps.Brushes.White}"
+                    IsIndeterminate="True"
+                    Visibility="{Binding IsRunning, Converter={StaticResource gc}}" />
+
+            </Hyperlink>
+        </TextBlock>
+        <Popup
+            MinWidth="100"
+            AllowsTransparency="True"
+            IsOpen="{Binding ShowDetails}"
+            Placement="Top"
+            PlacementTarget="{Binding ElementName=Details}"
+            PopupAnimation="Slide"
+            StaysOpen="False">
+            <Grid
+                Margin="5"
+                Background="{DynamicResource MahApps.Brushes.Accent}">
+                <StackPanel
+                    Margin="5"
+                    Orientation="Vertical">
+
+                    <Grid Margin="0,0,0,5">
+                        <TextBlock Text="Tasks" />
+                        <TextBlock HorizontalAlignment="Right">
+                            <Hyperlink Command="{Binding ClearTasksCommand}">
+                                <TextBlock Text="clear" />
+                            </Hyperlink>
+                        </TextBlock>
+                    </Grid>
+
+                    <ListView ItemsSource="{Binding Tasks}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Focusable" Value="false" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid ToolTip="{Binding Error.Message}">
+                                    <Grid.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Black}" />
+                                        </Style>
+                                    </Grid.Resources>
+                                    <Grid
+                                        Width="300"
+                                        Margin="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Visibility="{Binding HasError, Converter={StaticResource gc}}">
+                                                <TextBlock
+                                                    Padding="0,0,5,0"
+                                                    Foreground="Red"
+                                                    Style="{DynamicResource tbb}"
+                                                    Text="&#xE814;" />
+                                            </StackPanel>
+                                            <TextBlock Text="{Binding TypeName}" />
+                                            <TextBlock
+                                                Margin="5,0,0,0"
+                                                VerticalAlignment="Center"
+                                                FontSize="9"
+                                                Text="{Binding Abstract}" />
+                                        </StackPanel>
+
+                                        <!--  progress bar  -->
+                                        <StackPanel
+                                            Grid.Row="1"
+                                            Height="14"
+                                            Orientation="Vertical"
+                                            Visibility="{Binding IsComplete, Converter={StaticResource gc}, ConverterParameter=-1}">
+
+                                            <mah:MetroProgressBar
+                                                IsIndeterminate="true"
+                                                Visibility="{Binding IsIndeterminate, Converter={StaticResource gc}}" />
+
+                                            <Grid Visibility="{Binding IsIndeterminate, Converter={StaticResource gc}, ConverterParameter=-1}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <mah:MetroProgressBar
+                                                    Height="5"
+                                                    MinHeight="0"
+                                                    Maximum="100"
+                                                    Minimum="0"
+                                                    Value="{Binding ProgressPercentageInt}" />
+
+                                                <StackPanel
+                                                    Grid.Column="1"
+                                                    Orientation="Horizontal">
+                                                    <TextBlock
+                                                        FontSize="9"
+                                                        Text="{Binding ProgressPercentageInt}" />
+                                                    <TextBlock
+                                                        FontSize="9"
+                                                        FontWeight="Bold"
+                                                        Text="%" />
+                                                </StackPanel>
+
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <TextBlock
+                                            Grid.Row="2"
+                                            FontSize="9"
+                                            FontStyle="Italic"
+                                            Text="{Binding Message}" />
+                                    </Grid>
+
+                                    <Border
+                                        Grid.RowSpan="3"
+                                        BorderThickness="1" />
+
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Grid>
+        </Popup>
+    </StackPanel>
+</UserControl>

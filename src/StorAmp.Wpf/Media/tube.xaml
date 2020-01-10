@@ -1,0 +1,37 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <DrawingImage.Drawing>
+        <DrawingGroup ClipGeometry="M0,0 V48 H32 V0 H0 Z">
+            <DrawingGroup Opacity="1">
+                <GeometryDrawing
+                    Brush="#FFE5E5E5"
+                    Geometry="F1 M32,48z M0,0z M16,0C7.2,0,0,3.6,0,8L0,40C0,44.4 7.2,48 16,48 24.8,48 32,44.4 32,40L32,8C32,3.6,24.8,0,16,0z" />
+                <GeometryDrawing
+                    Brush="#FFCC291F"
+                    Geometry="F1 M32,48z M0,0z M16,32C7.2,32,0,28.4,0,24L0,32C0,36.4 7.2,40 16,40 24.8,40 32,36.4 32,32L32,24C32,28.4,24.8,32,16,32z" />
+                <GeometryDrawing
+                    Brush="#FFCC291F"
+                    Geometry="F1 M32,48z M0,0z M16,16C7.2,16,0,12.4,0,8L0,16C0,20.4 7.2,24 16,24 24.8,24 32,20.4 32,16L32,8C32,12.4,24.8,16,16,16z" />
+                <GeometryDrawing Geometry="F1 M32,48z M0,0z M16,16C7.2,16,0,12.4,0,8L0,40C0,44.4 7.2,48 16,48 24.8,48 32,44.4 32,40L32,8C32,12.4,24.8,16,16,16z">
+                    <GeometryDrawing.Brush>
+                        <SolidColorBrush
+                            Opacity="0.2"
+                            Color="#FF000000" />
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                    <GeometryDrawing.Brush>
+                        <SolidColorBrush
+                            Opacity="0.4"
+                            Color="#FF000000" />
+                    </GeometryDrawing.Brush>
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry
+                            Center="16,8"
+                            RadiusX="12"
+                            RadiusY="5" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingImage.Drawing>
+</DrawingImage>

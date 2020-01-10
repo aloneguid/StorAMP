@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="StorAmp.Wpf.Wpf.Viewers.TextViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+             xmlns:controls="clr-namespace:StorAmp.Wpf.Controls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+   <UserControl.Resources>
+      <conv:GenericConverter x:Key="gc"/>
+      <conv:FileSizeConverter x:Key="fs"/>
+   </UserControl.Resources>
+   <Grid>
+
+      <Grid.RowDefinitions>
+         <!-- toolbar -->
+         <RowDefinition Height="Auto"/>
+
+         <!-- content -->
+         <RowDefinition/>
+      </Grid.RowDefinitions>
+
+      <ToolBarTray>
+         <ToolBar>
+
+            <Button
+               Command="{Binding SaveCommand}"
+               Style="{DynamicResource tb}">
+               <controls:WinUISymbol Symbol="Save"/>
+            </Button>
+
+            <Button
+               x:Name="ReformatButton"
+               Click="ReformatButton_Click"
+               ToolTip="Reformat this document" 
+               Style="{DynamicResource tb}">
+               <controls:WinUISymbol Symbol="AlignLeft"/>
+            </Button>
+
+            <!--<ToggleButton Style="{DynamicResource ttb}">
+               <controls:WinUISymbol Symbol="AlignLeft"/>
+            </ToggleButton>-->
+
+            <ComboBox
+               x:Name="Formats"
+               ItemsSource="{Binding Viewers, Mode=OneTime}"
+               SelectedItem="{Binding SelectedViewer}"
+               DisplayMemberPath="DisplayName"
+               BorderThickness="0"
+               FontFamily="Consolas"
+               Height="35">
+            </ComboBox>
+
+         </ToolBar>
+      </ToolBarTray>
+
+      <Border BorderThickness="2" BorderBrush="{DynamicResource MahApps.Brushes.Accent}" VerticalAlignment="Bottom"/>
+
+      <avalonEdit:TextEditor
+         x:Name="Avalon"
+         Grid.Row="1"
+         xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+         FontFamily="Consolas"
+         Margin="5"
+         ShowLineNumbers="True"
+         WordWrap="True"
+         FontSize="10pt"
+         BorderThickness="0"
+         TextChanged="Avalon_TextChanged"/>
+
+   </Grid>
+</UserControl>

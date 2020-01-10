@@ -1,0 +1,29 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+   <DrawingImage.Drawing>
+      <DrawingGroup ClipGeometry="M0,0 V50 H50 V0 H0 Z">
+         <DrawingGroup.Transform>
+            <TranslateTransform X="0" Y="1.7784601368475705E-05" />
+         </DrawingGroup.Transform>
+         <DrawingGroup Opacity="1">
+            <GeometryDrawing Brush="#FF59B4D9" Geometry="F1 M50,50z M0,0z M25.001,50.001A4.575,4.575,0,0,1,21.74,48.649L1.351,28.261A4.64,4.64,0,0,1,0,25C0,23.786,0.492,22.598,1.351,21.74L21.74,1.352A4.578,4.578,0,0,1,25.001,0C26.232,0,27.391,0.48,28.262,1.352L48.648,21.74A4.565,4.565,0,0,1,50,25A4.574,4.574,0,0,1,48.647,28.263L28.262,48.649A4.578,4.578,0,0,1,25.001,50.001" />
+            <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M50,50z M0,0z M38.614,21.093A3.91,3.91,0,0,0,34.704,25.002C34.704,25.794,34.943,26.529,35.349,27.145L27.605,34.889A4.55,4.55,0,0,0,26.949,34.516L26.949,14.759C28.116,14.083,28.91,12.835,28.91,11.389A3.91,3.91,0,0,0,21.092,11.389C21.092,12.835,21.886,14.083,23.052,14.759L23.052,34.515A4.48,4.48,0,0,0,22.42,34.868L14.667,27.115A3.88,3.88,0,0,0,15.295,25.002A3.909,3.909,0,1,0,11.387,28.911A3.88,3.88,0,0,0,12.661,28.681L20.811,36.831A4.552,4.552,0,1,0,29.198,36.863L37.371,28.691C37.763,28.823,38.175,28.911,38.612,28.911A3.909,3.909,0,0,0,38.614,21.093z" />
+            <GeometryDrawing Geometry="F1 M50,50z M0,0z M40.471,24.983L38.687,26.768 24.065,12.15 25.849,10.366z">
+               <GeometryDrawing.Brush>
+                  <SolidColorBrush Color="#FFFFFFFF" Opacity="0.5" />
+               </GeometryDrawing.Brush>
+            </GeometryDrawing>
+            <GeometryDrawing Geometry="F1 M50,50z M0,0z M24.166,10.377L25.95,12.162 11.33,26.782 9.545,24.998z">
+               <GeometryDrawing.Brush>
+                  <SolidColorBrush Color="#FFFFFFFF" Opacity="0.5" />
+               </GeometryDrawing.Brush>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFB8D432" Geometry="F1 M50,50z M0,0z M27.665,38.614A2.71,2.71,0,1,1,22.245,38.612A2.71,2.71,0,0,1,27.665,38.614 M27.174,11.389A2.174,2.174,0,1,1,22.827,11.389A2.174,2.174,0,0,1,27.174,11.389 M13.563,25.001A2.175,2.175,0,1,1,9.213,24.999A2.175,2.175,0,0,1,13.563,25.001 M40.788,25.001A2.175,2.175,0,1,1,36.438,24.999A2.175,2.175,0,0,1,40.788,25.001" />
+            <GeometryDrawing Geometry="F1 M50,50z M0,0z M28.262,1.352A4.578,4.578,0,0,0,25.001,0C23.77,0,22.612,0.48,21.741,1.352L1.352,21.74A4.635,4.635,0,0,0,0,25C0,26.215,0.492,27.403,1.352,28.261L12.895,39.805 34.61,7.699 28.262,1.352z">
+               <GeometryDrawing.Brush>
+                  <SolidColorBrush Color="#FFFFFFFF" Opacity="0.1" />
+               </GeometryDrawing.Brush>
+            </GeometryDrawing>
+         </DrawingGroup>
+      </DrawingGroup>
+   </DrawingImage.Drawing>
+</DrawingImage>

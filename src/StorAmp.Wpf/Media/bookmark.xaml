@@ -1,0 +1,10 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+   <DrawingImage.Drawing>
+      <DrawingGroup ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+         <DrawingGroup.Transform>
+            <TranslateTransform X="0" Y="7.12609471520409E-06" />
+         </DrawingGroup.Transform>
+         <GeometryDrawing Brush="#FF000000" Geometry="F1 M128,128z M0,0z M98.78,0L29.22,0A7.21,7.21,0,0,0,22,7.19L22,120.8A7.08,7.08,0,0,0,26.42,127.43A7.22,7.22,0,0,0,34.29,125.93L63.14,97.59A1.23,1.23,0,0,1,64.86,97.59L93.72,125.92A7.21,7.21,0,0,0,101.59,127.42A7.08,7.08,0,0,0,106,120.8L106,7.19A7.21,7.21,0,0,0,98.78,0z M100,120.8A1.14,1.14,0,0,1,99.26,121.89A1.17,1.17,0,0,1,97.92,121.64L97.92,121.64 69.06,93.31A7.26,7.26,0,0,0,58.93,93.31L30.08,121.64A1.18,1.18,0,0,1,28.74,121.89A1.14,1.14,0,0,1,28,120.8L28,7.19A1.21,1.21,0,0,1,29.22,6L98.78,6A1.21,1.21,0,0,1,100,7.19z" />
+      </DrawingGroup>
+   </DrawingImage.Drawing>
+</DrawingImage>

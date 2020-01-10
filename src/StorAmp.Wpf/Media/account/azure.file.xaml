@@ -1,0 +1,56 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <DrawingImage.Drawing>
+        <DrawingGroup ClipGeometry="M0,0 V18 H18 V0 H0 Z">
+            <DrawingGroup.Transform>
+                <TranslateTransform X="0" Y="0.010000000000000009" />
+            </DrawingGroup.Transform>
+            <DrawingGroup Opacity="1">
+                <GeometryDrawing
+                    Brush="#FF005BA1"
+                    Geometry="F1 M18,18z M0,0z M17.28,3.9L16.37,3.9A4.16,4.16,0,0,0,15.82,3.9A0.68,0.68,0,0,1,15.23,2.9L15.62,2.2A1.83,1.83,0,0,0,15.11,1.91L14.18,3.57A0.7,0.7,0,0,1,13.58,3.92L12.75,3.92A0.66,0.66,0,0,0,12.43,4L10.86,5A0.25,0.25,0,0,1,10.7,5L5.27,5A0.29,0.29,0,0,0,5,5.32L5,10.14 3.25,10.68 3.38,11.24 5,11 5,13.9A0.29,0.29,0,0,0,5.29,14.19L14.66,14.19 15.81,15.68 16.3,15.37 15.62,14.19 17.3,14.19A0.29,0.29,0,0,0,17.6,13.9L17.6,4.2A0.3,0.3,0,0,0,17.28,3.9z" />
+                <GeometryDrawing Brush="#FF50E5FF">
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry
+                            Center="15.88,1.08"
+                            RadiusX="1.09"
+                            RadiusY="1.09" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF50E5FF">
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry
+                            Center="16.58,16.59"
+                            RadiusX="1.42"
+                            RadiusY="1.42" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF50E5FF">
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry
+                            Center="1.77,11.44"
+                            RadiusX="1.77"
+                            RadiusY="1.77" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing
+                    Brush="#FF0078D4"
+                    Geometry="F1 M18,18z M0,0z M15.17,4.75L8.26,3.75 8.12,3.75A1,1,0,0,0,7.12,4.62L6.86,6.31 16,6.31 16,5.9A1,1,0,0,0,15.17,4.75z" />
+                <GeometryDrawing
+                    Brush="#FFFFFFFF"
+                    Geometry="F1 M18,18z M0,0z M15.1,5.18L8.2,4.18 8.11,4.18A0.58,0.58,0,0,0,7.54,4.68L7.3,6.31 15.52,6.31 15.59,5.84A0.58,0.58,0,0,0,15.1,5.18z" />
+                <GeometryDrawing Geometry="F1 M18,18z M0,0z M5.26,5L11.31,5A0.33,0.33,0,0,1,11.52,5.09L12.52,6.09A0.29,0.29,0,0,0,12.73,6.18L17.33,6.18A0.3,0.3,0,0,1,17.63,6.47L17.63,13.9A0.3,0.3,0,0,1,17.33,14.19L5.33,14.19A0.29,0.29,0,0,1,5,13.9L5,5.32A0.3,0.3,0,0,1,5.26,5z">
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush MappingMode="Absolute" Opacity="1" SpreadMethod="Pad" Transform="-1,0,0,1,-1256.13,0" StartPoint="-1267.23,3.07" EndPoint="-1267.52,14.64">
+                            <GradientStop Offset="0" Color="#FF32D4F5" />
+                            <GradientStop Offset="0.23" Color="#FF31D0F1" />
+                            <GradientStop Offset="0.46" Color="#FF2CC3E6" />
+                            <GradientStop Offset="0.7" Color="#FF25AFD4" />
+                            <GradientStop Offset="0.94" Color="#FF1C92BA" />
+                            <GradientStop Offset="1" Color="#FF198AB3" />
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingImage.Drawing>
+</DrawingImage>

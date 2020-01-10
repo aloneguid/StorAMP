@@ -1,0 +1,29 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <DrawingImage.Drawing>
+        <DrawingGroup ClipGeometry="M0,0 V18 H18 V0 H0 Z">
+            <DrawingGroup Opacity="1">
+                <GeometryDrawing Geometry="F1 M18,18z M0,0z M0.5,5.79L17.5,5.79 17.5,15.27A0.57,0.57,0,0,1,16.93,15.84L1.07,15.84A0.57,0.57,0,0,1,0.5,15.27L0.5,5.79z">
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush MappingMode="Absolute" Opacity="1" SpreadMethod="Pad" StartPoint="9,15.83" EndPoint="9,5.79">
+                            <GradientStop Offset="0" Color="#FFB3B3B3" />
+                            <GradientStop Offset="0.26" Color="#FFC1C1C1" />
+                            <GradientStop Offset="1" Color="#FFE6E6E6" />
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <GeometryDrawing
+                    Brush="#FF37C2B1"
+                    Geometry="F1 M18,18z M0,0z M1.07,2.17L16.93,2.17A0.57,0.57,0,0,1,17.5,2.74L17.5,5.79 0.5,5.79 0.5,2.73A0.57,0.57,0,0,1,1.07,2.17z" />
+                <GeometryDrawing
+                    Brush="#FFFFFFFF"
+                    Geometry="F1 M18,18z M0,0z M2.81,6.89L15.18,6.89A0.27,0.27,0,0,1,15.44,7.16L15.44,8.56A0.27,0.27,0,0,1,15.18,8.83L2.81,8.83A0.27,0.27,0,0,1,2.55,8.56L2.55,7.16A0.27,0.27,0,0,1,2.81,6.89z" />
+                <GeometryDrawing
+                    Brush="#FF37C2B1"
+                    Geometry="F1 M18,18z M0,0z M2.82,9.68L15.19,9.68A0.27,0.27,0,0,1,15.45,9.95L15.45,11.36A0.27,0.27,0,0,1,15.19,11.63L2.82,11.63A0.27,0.27,0,0,1,2.56,11.36L2.56,10A0.27,0.27,0,0,1,2.82,9.68z" />
+                <GeometryDrawing
+                    Brush="#FF258277"
+                    Geometry="F1 M18,18z M0,0z M2.82,12.5L15.19,12.5A0.27,0.27,0,0,1,15.45,12.77L15.45,14.18A0.27,0.27,0,0,1,15.19,14.45L2.82,14.45A0.27,0.27,0,0,1,2.56,14.18L2.56,12.77A0.27,0.27,0,0,1,2.82,12.5z" />
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingImage.Drawing>
+</DrawingImage>

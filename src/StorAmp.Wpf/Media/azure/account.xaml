@@ -1,0 +1,43 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+   <DrawingImage.Drawing>
+      <DrawingGroup ClipGeometry="M0,0 V50 H50 V0 H0 Z">
+         <GeometryDrawing Brush="#FF3999C6">
+            <GeometryDrawing.Geometry>
+               <RectangleGeometry RadiusX="0" RadiusY="0" Rect="2,34,12,12" />
+            </GeometryDrawing.Geometry>
+         </GeometryDrawing>
+         <GeometryDrawing Brush="#FF0072C6">
+            <GeometryDrawing.Geometry>
+               <RectangleGeometry RadiusX="0" RadiusY="0" Rect="2,20,12,12" />
+            </GeometryDrawing.Geometry>
+         </GeometryDrawing>
+         <GeometryDrawing Brush="#FF0072C6">
+            <GeometryDrawing.Geometry>
+               <RectangleGeometry RadiusX="0" RadiusY="0" Rect="16,34,12,12" />
+            </GeometryDrawing.Geometry>
+         </GeometryDrawing>
+         <DrawingGroup Transform="0.8944,-0.4472,0.4472,0.8944,-3.0381,19.1305">
+            <GeometryDrawing Brush="#FF0072C6">
+               <GeometryDrawing.Geometry>
+                  <RectangleGeometry RadiusX="0" RadiusY="0" Rect="33,10,12,12" />
+               </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+         </DrawingGroup>
+         <GeometryDrawing Brush="#FF3999C6">
+            <GeometryDrawing.Geometry>
+               <RectangleGeometry RadiusX="0" RadiusY="0" Rect="30,34,12,12" />
+            </GeometryDrawing.Geometry>
+         </GeometryDrawing>
+         <GeometryDrawing Brush="#FF3999C6">
+            <GeometryDrawing.Geometry>
+               <RectangleGeometry RadiusX="0" RadiusY="0" Rect="16,20,12,12" />
+            </GeometryDrawing.Geometry>
+         </GeometryDrawing>
+         <GeometryDrawing Brush="#FF3999C6">
+            <GeometryDrawing.Geometry>
+               <RectangleGeometry RadiusX="0" RadiusY="0" Rect="2,6,12,12" />
+            </GeometryDrawing.Geometry>
+         </GeometryDrawing>
+      </DrawingGroup>
+   </DrawingImage.Drawing>
+</DrawingImage>

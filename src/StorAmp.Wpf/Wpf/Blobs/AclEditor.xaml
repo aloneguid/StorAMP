@@ -1,0 +1,64 @@
+﻿<UserControl
+    x:Class="StorAmp.Wpf.Wpf.Blobs.AclEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:StorAmp.Wpf.Wpf.Blobs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:StorAmp.Core.ViewModel.Blobs;assembly=StorAmp.Core"
+    d:DesignHeight="450"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <vm:AdlsGen2PermissionsViewModel />
+    </UserControl.DataContext>
+    <StackPanel Orientation="Vertical">
+        <TextBlock
+            FontWeight="Bold"
+            Text="Owning User" />
+        <local:AclEntryEditor
+            Margin="0,0,0,10"
+            DataContext="{Binding Acl.OwnerUser}" />
+
+        <TextBlock
+            FontWeight="Bold"
+            Text="Owning Group" />
+        <local:AclEntryEditor
+            Margin="0,0,0,10"
+            DataContext="{Binding Acl.OwnerGroup}" />
+
+        <StackPanel
+            Margin="0,0,0,10"
+            Orientation="Vertical">
+            <TextBlock
+                FontWeight="Bold"
+                Text="Access Control List" />
+            <ListBox ItemsSource="{Binding Acl.Acl}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <local:AclEntryEditor Margin="0,0,0,5" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </StackPanel>
+
+        <StackPanel
+            Margin="0,0,0,10"
+            Orientation="Vertical">
+            <TextBlock
+                FontWeight="Bold"
+                Text="Default ACL" />
+            <ListBox ItemsSource="{Binding Acl.DefaultAcl}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <local:AclEntryEditor Margin="0,0,0,5" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </StackPanel>
+
+
+    </StackPanel>
+</UserControl>

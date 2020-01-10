@@ -1,0 +1,201 @@
+﻿<UserControl
+    x:Class="CloudExplorer.Wpf.Wpf.BlobListPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CloudExplorer.Wpf.Wpf"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shared="clr-namespace:StorAmp.Wpf"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <conv:FileSizeConverter x:Key="FSC" />
+        <conv:FileIconConverter x:Key="FIC" />
+        <conv:StorageTypeIconConverter x:Key="STIC" />
+        <conv:GenericConverter x:Key="gc" />
+        <conv:HumanizeNumberConverter x:Key="h" />
+        <shared:BindingProxy
+            x:Key="proxy"
+            Data="{Binding}" />
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding
+            Key="Backspace"
+            Command="{Binding GoLevelUpCommand}" />
+        <KeyBinding
+            Key="Delete"
+            Command="{Binding DeleteBlobsCommand}" />
+        <KeyBinding
+            Key="F5"
+            Command="{Binding RefreshCommand}" />
+    </UserControl.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--  action toolbar  -->
+            <RowDefinition Height="Auto" />
+
+            <!--  File List  -->
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <!--  toolbar  -->
+                <ColumnDefinition Width="Auto" />
+                <!--  path  -->
+                <ColumnDefinition />
+                <!--  filter  -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <local:ActionToolbar />
+
+            <TextBox
+                Grid.Column="1"
+                Height="15"
+                Margin="-10,0,5,0"
+                Padding="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                KeyUp="TextBox_KeyUp_UpdateBinding"
+                Text="{Binding FolderPath}" />
+            <!--<controls:VisualPath Grid.Column="1" FolderPath="{Binding FolderPath}" Height="25"/>-->
+
+            <StackPanel
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                Orientation="Horizontal"
+                ToolTip="Filter current view based on text you type here">
+                <TextBlock
+                    Margin="0,5,0,0"
+                    Style="{DynamicResource tbb}"
+                    Text="&#xE16E;" />
+                <TextBox
+                    Height="15"
+                    MinWidth="200"
+                    Margin="5,0,5,0"
+                    Padding="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    mah:TextBoxHelper.ClearTextButton="True"
+                    mah:TextBoxHelper.Watermark="list filter"
+                    KeyUp="TextBox_KeyUp_UpdateBinding"
+                    Text="{Binding FilterText}" />
+            </StackPanel>
+
+        </Grid>
+
+        <DataGrid
+            x:Name="ItemsGrid"
+            Grid.Row="1"
+            AllowDrop="True"
+            AutoGenerateColumns="False"
+            DataContextChanged="ItemsGrid_DataContextChanged"
+            DragOver="ItemsGrid_DragOver"
+            Drop="ItemsGrid_Drop"
+            EnableColumnVirtualization="True"
+            EnableRowVirtualization="True"
+            GridLinesVisibility="None"
+            IsReadOnly="True"
+            ItemsSource="{Binding FilteredBlobs, Mode=OneWay}"
+            MinRowHeight="15"
+            MouseDoubleClick="ItemsGrid_MouseDoubleClick"
+            PreviewKeyDown="ItemsGrid_PreviewKeyDown"
+            RowHeight="24"
+            SelectionChanged="ItemsGrid_SelectionChanged"
+            VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+            VirtualizingPanel.VirtualizationMode="Recycling">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn
+                    Width="*"
+                    Header="Name"
+                    SortMemberPath="Id">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image
+                                    Grid.Column="0"
+                                    Width="15"
+                                    Height="15"
+                                    Margin="5,0,0,0"
+                                    Source="{Binding Converter={StaticResource FIC}, Mode=OneTime}" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Padding="5,0,0,0"
+                                    Text="{Binding Name, Mode=OneTime}"
+                                    Visibility="{Binding Source={StaticResource proxy}, Path=Data.SingleClickNavigation, Converter={StaticResource gc}, ConverterParameter=-1, Mode=OneTime}" />
+                                <TextBlock
+                                    Padding="5,0,0,0"
+                                    Visibility="{Binding Source={StaticResource proxy}, Path=Data.SingleClickNavigation, Converter={StaticResource gc}, Mode=OneTime}">
+                                    <Hyperlink
+                                        Command="{Binding Source={StaticResource proxy}, Path=Data.ParametrisedItemActionCommand}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource DataGridLink}">
+                                        <TextBlock Text="{Binding Name, Mode=OneTime}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn
+                    Width="Auto"
+                    Header="Size"
+                    SortMemberPath="Size">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label
+                                Margin="0"
+                                Padding="0"
+                                HorizontalAlignment="Right"
+                                Content="{Binding Size, Converter={StaticResource FSC}, Mode=OneTime}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn
+                    Width="Auto"
+                    Binding="{Binding LastModificationTime, Mode=OneTime, Converter={StaticResource gc}, ConverterParameter=human}"
+                    Header="Changed" />
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu
+                    x:Name="BlobContextMenu"
+                    BorderThickness="0">
+                    <MenuItem
+                        Command="{Binding ViewBlobCommand}"
+                        Header="View">
+                        <MenuItem.Icon>
+                            <TextBlock
+                                Style="{DynamicResource tbb}"
+                                Text="&#xE18B;" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        Command="{Binding ExternalOpenCommand}"
+                        Header="Download and Open Locally">
+                        <MenuItem.Icon>
+                            <TextBlock
+                                Style="{DynamicResource tbb}"
+                                Text="&#xE17D;" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        Command="{Binding DeleteBlobsCommand}"
+                        Header="Delete">
+                        <MenuItem.Icon>
+                            <TextBlock
+                                Style="{DynamicResource tbb}"
+                                Text="&#xE107;" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+
+
+</UserControl>

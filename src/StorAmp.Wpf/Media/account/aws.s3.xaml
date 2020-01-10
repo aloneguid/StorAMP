@@ -1,0 +1,22 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+   <DrawingImage.Drawing>
+      <DrawingGroup ClipGeometry="M0,0 V100 H100 V0 H0 Z">
+         <DrawingGroup Opacity="1">
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF8C3123" Geometry="F1 M100,100z M0,0z M50.329,67.354L50.329,67.354 75.312,73.399 75.312,26.492 50.329,32.541z" />
+               <GeometryDrawing Brush="#FFE05243" Geometry="F1 M100,100z M0,0z M75.313,26.492L75.313,26.492 80.114,28.892 80.114,71.013 75.313,73.412z" />
+               <GeometryDrawing Brush="#FFE05243" Geometry="F1 M100,100z M0,0z M61.226,34.856L61.226,34.856 50.329,32.16 50.329,14 61.226,19.448z" />
+               <GeometryDrawing Brush="#FFE05243" Geometry="F1 M100,100z M0,0z M50.329,86L50.329,86 61.225,80.554 61.225,65.146 50.329,67.841z" />
+               <GeometryDrawing Brush="#FFE05243" Geometry="F1 M100,100z M0,0z M61.226,57.714L61.226,57.714 50.329,59.101 50.329,40.94 61.226,42.307z" />
+               <GeometryDrawing Brush="#FFE05243" Geometry="F1 M100,100z M0,0z M50.329,67.354L50.329,67.354 25.345,73.399 25.345,26.492 50.329,32.541z" />
+               <GeometryDrawing Brush="#FF8C3123" Geometry="F1 M100,100z M0,0z M25.345,26.492L25.345,26.492 20.546,28.892 20.546,71.013 25.345,73.412z" />
+               <GeometryDrawing Brush="#FF8C3123" Geometry="F1 M100,100z M0,0z M39.435,34.856L39.435,34.856 50.329,32.16 50.329,14 39.435,19.448z" />
+               <GeometryDrawing Brush="#FF8C3123" Geometry="F1 M100,100z M0,0z M50.329,86L50.329,86 39.434,80.554 39.434,65.146 50.329,67.841z" />
+               <GeometryDrawing Brush="#FF8C3123" Geometry="F1 M100,100z M0,0z M39.435,57.714L39.435,57.714 50.329,59.101 50.329,40.94 39.435,42.307z" />
+               <GeometryDrawing Brush="#FF5E1F18" Geometry="F1 M100,100z M0,0z M61.226,34.856L61.226,34.856 50.329,36.842 39.435,34.856 50.329,32.16z" />
+               <GeometryDrawing Brush="#FFF2B0A9" Geometry="F1 M100,100z M0,0z M61.226,65.145L61.226,65.145 50.329,63.146 39.435,65.145 50.329,67.858z" />
+            </DrawingGroup>
+         </DrawingGroup>
+      </DrawingGroup>
+   </DrawingImage.Drawing>
+</DrawingImage>

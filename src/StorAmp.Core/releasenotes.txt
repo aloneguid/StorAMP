@@ -1,0 +1,48 @@
+﻿v1.6.2 (10/12/2019)
+- new feature: azure blob storage supports connections to local emulator
+
+v1.6.1 (29/11/2019)
+- new experimental (!) feature: folder tree is displayed on the right, this will be improved dramatically in future releases, but please let me know your thoughts/ideas.
+- improvement: changing settings related to blob list are applied immediately.
+
+v1.6.0 (22/11/2019)
+- new feature: rename operation supports renaming files and folders. When implementations do not support renaming (for instance AWS S3, Azure Blob storage etc.) "rename" recursively renames all the files so you don't have to worry about that.
+- new feature: single-click navigation in blob list - blobs and folders act like links so they only need a single click instead of double. You can turn this on and off in settings.
+- new feature: you can now access azure blob storage "$logs" container containing system metrics.
+- new feature: azure blob storage displays "access tier" in a separate column.
+- new feature: built-in CSV viewer.
+- new feature: built-in video viewer.
+- new feature: Microsoft Azure accounts support - right click on "Azure" tree node to add an account.
+- new feature: You can organise accounts in folders.
+- improvement: option to show task pane automatically when a new task is added (enabled by default now).
+- improvement: error message on storage opening now looks much more professional.
+- improvement: blob sizes have better formatting, especially for small file sizes.
+- improvement: .ico files are supported by built-in viewer.
+- bug fixed: built-in viewer would sometimes show results from the previous session while downloading a file for preview.
+
+v1.5.0 (08/11/2019)
+- new UI feature: you can have alternate row colours in blob list, see application settings.
+- new feature: Azure Blob Storage displays Lease status for containers and blobs.
+- new feature: You can acquire container and blob leases (infinite or timed) and break them. Right-click container or blob to access this.
+- bug fixed: Azure Blob Storage "last modified" column disappeared due to how custom columns are handled, all restored now.
+- bug fixed: Provider specific custom columns were not displaying on application open until you refresh the view.
+
+v1.4.9 (06/11/2019)
+- bug fixed: If you didn't have AWS CLI installed (lucky you!) the application would crash on start.
+
+v1.4.8 (04/11/2019)
+- Right-clicking a blob in Azure Blob Storage brings up a new context menu item "Get public download URL for 1 day". This generates a temporary URL that lasts for one day from the time of the request, and users can use it to download the blob with anonymous access.
+- Experimental AWS feature - list AWS CLI profiles and buckets under them. You can open the buckets to browse and save them.
+- You can connect to AWS S3 bucket using new connection type - "AWS CLI profile".
+- nasty bug fixed: when re-opening StorAmp, it wouldn't properly restore the last tab you were focused on.
+- Microsoft Azure Explorer Beta temporary removed due to technical limitations in authenticating across tenants. It will be re-enabled in future releases as it's being rewritted on a new core.
+
+v1.4.7 (22/10/2019)
+- "Upload from local disk" 💿 toolbar button works again! You can multi-select files for upload, and folder is automatically refreshed once the task is complete.
+- New feature: create a new text file in current folder. Access by tapping on a new dedicated toolbar button.
+- New feature: files or folder (or both!) can be downloaded locally via a new toolbar button. Multi-select is possible, for files or folder, or both at the same time!
+
+v1.4.6 (22/10/2019)
+- New folders can be created for all blob storage providers.
+- You can view azure blob containers public access permissions and change them. To view, simply refresh the root folder where contains are displayed and look at extra column 'Public Access'. To change, right-click the container.
+- You can view release notes, which is kind of useful 😊

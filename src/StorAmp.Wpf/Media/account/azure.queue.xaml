@@ -1,0 +1,16 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+   <DrawingImage.Drawing>
+      <DrawingGroup ClipGeometry="M0,0 V50 H50 V0 H0 Z">
+         <DrawingGroup Opacity="1">
+            <GeometryDrawing Brush="#FFA0A1A2" Geometry="F1 M50,50z M0,0z M0,44.8C0,45.8,0.8,46.7,1.8,46.7L48.1,46.7C49.1,46.7,50,45.9,50,44.8L50,11.7 0,11.7 0,44.8z" />
+            <GeometryDrawing Brush="#FF7A7A7A" Geometry="F1 M50,50z M0,0z M48.1,4L1.8,4C0.8,4,0,4.9,0,5.9L0,11.6 50,11.6 50,5.9C50,4.9,49.2,4,48.1,4" />
+            <GeometryDrawing Brush="#FF804998" Geometry="F1 M50,50z M0,0z M3.7,15.1L15.7,15.1 15.7,42.9 3.7,42.9z M19,15.1L31,15.1 31,42.9 19,42.9z M34.3,15.1L46.3,15.1 46.3,42.9 34.3,42.9z" />
+            <GeometryDrawing Geometry="F1 M50,50z M0,0z M2,4C0.9,4,0,4.9,0,6L0,44.6C0,45.7,0.9,46.6,2,46.6L4.2,46.6 43.6,4 2,4z">
+               <GeometryDrawing.Brush>
+                  <SolidColorBrush Color="#FFFFFFFF" Opacity="0.2" />
+               </GeometryDrawing.Brush>
+            </GeometryDrawing>
+         </DrawingGroup>
+      </DrawingGroup>
+   </DrawingImage.Drawing>
+</DrawingImage>

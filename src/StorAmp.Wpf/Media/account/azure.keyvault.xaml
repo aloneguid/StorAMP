@@ -1,0 +1,73 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <DrawingImage.Drawing>
+        <DrawingGroup ClipGeometry="M0,0 V18 H18 V0 H0 Z">
+            <DrawingGroup Opacity="1">
+                <GeometryDrawing Geometry="F1 M18,18z M0,0z M9,0.5A8.5,8.5,0,1,0,17.5,9A8.51,8.51,0,0,0,9,0.5z M9,16.34A7.34,7.34,0,1,1,16.34,9A7.34,7.34,0,0,1,9,16.34z">
+                    <GeometryDrawing.Brush>
+                        <RadialGradientBrush Center="9,9" GradientOrigin="9,9" MappingMode="Absolute" Opacity="1" RadiusX="8.5" RadiusY="8.5" SpreadMethod="Pad">
+                            <GradientStop Offset="0.18" Color="#FF5EA0EF" />
+                            <GradientStop Offset="0.56" Color="#FF5C9FEE" />
+                            <GradientStop Offset="0.69" Color="#FF559CED" />
+                            <GradientStop Offset="0.78" Color="#FF4A97E9" />
+                            <GradientStop Offset="0.86" Color="#FF3990E4" />
+                            <GradientStop Offset="0.93" Color="#FF2387DE" />
+                            <GradientStop Offset="0.99" Color="#FF087BD6" />
+                            <GradientStop Offset="1" Color="#FF0078D4" />
+                        </RadialGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FFFFFFFF">
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry
+                            Center="9,9"
+                            RadiusX="7.34"
+                            RadiusY="7.34" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Geometry="F1 M18,18z M0,0z M13.44,7.33A1.84,1.84,0,0,0,13.44,4.74L10.29,1.58A1.83,1.83,0,0,0,7.71,1.58L4.56,4.74A1.84,1.84,0,0,0,4.56,7.33L7.18,10A0.51,0.51,0,0,1,7.33,10.36L7.33,15.24A0.63,0.63,0,0,0,7.51,15.68L8.71,16.88A0.41,0.41,0,0,0,9.29,16.88L10.45,15.72 11.13,15.04A0.25,0.25,0,0,0,11.13,14.7L10.64,14.21A0.27,0.27,0,0,1,10.64,13.84L11.13,13.35A0.25,0.25,0,0,0,11.13,13.01L10.64,12.52A0.27,0.27,0,0,1,10.64,12.15L11.13,11.66A0.25,0.25,0,0,0,11.13,11.32L10.45,10.63 10.45,10.38z M9,2.35A1,1,0,0,1,9,4.42A1,1,0,1,1,9,2.35z">
+                    <GeometryDrawing.Brush>
+                        <RadialGradientBrush Center="38.95,182.07" GradientOrigin="38.95,182.07" MappingMode="Absolute" Opacity="1" RadiusX="9.88" RadiusY="9.88" SpreadMethod="Pad" Transform="0.94,0,0,0.94,-28.71,-163.24">
+                            <GradientStop Offset="0.27" Color="#FFFFD70F" />
+                            <GradientStop Offset="0.49" Color="#FFFFCB12" />
+                            <GradientStop Offset="0.88" Color="#FFFEAC19" />
+                            <GradientStop Offset="1" Color="#FFFEA11B" />
+                        </RadialGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <GeometryDrawing Geometry="F1 M18,18z M0,0z M8.18,15.3A0.23,0.23,0,0,0,8.56,15.13L8.56,11.13A0.24,0.24,0,0,0,8.45,10.93A0.22,0.22,0,0,0,8.11,11.13L8.11,15.13A0.28,0.28,0,0,0,8.18,15.3z">
+                    <GeometryDrawing.Brush>
+                        <SolidColorBrush
+                            Opacity="0.75"
+                            Color="#FFFF9300" />
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                    <GeometryDrawing.Brush>
+                        <SolidColorBrush
+                            Opacity="0.75"
+                            Color="#FFFF9300" />
+                    </GeometryDrawing.Brush>
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry
+                            RadiusX="0.28"
+                            RadiusY="0.28"
+                            Rect="6.48,5.79,5.17,0.61" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                    <GeometryDrawing.Brush>
+                        <SolidColorBrush
+                            Opacity="0.75"
+                            Color="#FFFF9300" />
+                    </GeometryDrawing.Brush>
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry
+                            RadiusX="0.28"
+                            RadiusY="0.28"
+                            Rect="6.48,6.78,5.17,0.61" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingImage.Drawing>
+</DrawingImage>

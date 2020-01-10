@@ -1,0 +1,50 @@
+trigger:                                                                                                                 batch: true
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - README.md
+      - /doc/**/*
+
+variables:
+  BuildPlatform: 'x86'
+  BuildConfiguration: 'release'
+  vmImage: 'windows-latest'
+
+
+stages:
+- stage: build
+  jobs:
+  - job: Core
+    pool:
+      vmImage: $(vmImage)
+
+
+    steps:
+
+    - task: UseDotNet@2
+      displayName: 'Use .Net Core sdk 3.0.x'
+      inputs:
+         version: 3.0.x
+
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet restore'
+      inputs:
+         command: restore
+         projects: src/StorAmp/StorAmp.sln
+
+    - task: VSBuild@1
+      displayName: 'Build solution'
+      inputs:
+         solution: src/StorAmp/StorAmp.sln
+         msbuildArgs: '/p:AppxBundlePlatforms="$(BuildPlatform)" /p:AppxPackageDir="$(Build.ArtifactStagingDirectory)\AppxPackages\\"  /p:UapAppxPackageBuildMode=StoreUpload '
+         platform: '$(BuildPlatform)'
+         configuration: '$(BuildConfiguration)'
+         restoreNugetPackages: true
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: appx'
+      inputs:
+         PathtoPublish: '$(Build.ArtifactStagingDirectory)\AppxPackages'
+         ArtifactName: appx

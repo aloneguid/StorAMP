@@ -1,0 +1,47 @@
+﻿<UserControl
+    x:Class="StorAmp.Wpf.Wpf.Blobs.BlobMetadataContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:StorAmp.Wpf.Wpf.Blobs"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <conv:GenericConverter x:Key="gc" />
+        <conv:FileIconConverter x:Key="fic" />
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Visibility="{Binding SelectedBlob, Converter={StaticResource gc}}">
+
+            <StackPanel
+                Orientation="Vertical"
+                Visibility="{Binding IsLoading, Converter={StaticResource gc}, ConverterParameter=-1}">
+
+                <DataGrid
+                    HorizontalAlignment="Stretch"
+                    AutoGenerateColumns="False"
+                    GridLinesVisibility="Vertical"
+                    IsReadOnly="False"
+                    ItemsSource="{Binding EditableMetadata}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="80"
+                            Binding="{Binding Key}"
+                            Header="Name" />
+                        <DataGridTextColumn
+                            Width="150"
+                            Binding="{Binding Value}"
+                            Header="Value" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </StackPanel>
+        </StackPanel>
+
+        <mah:ProgressRing Visibility="{Binding IsLoading, Converter={StaticResource gc}}" />
+    </Grid>
+</UserControl>

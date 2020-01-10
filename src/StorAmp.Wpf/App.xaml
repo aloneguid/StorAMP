@@ -1,0 +1,176 @@
+﻿<Application
+    x:Class="CloudExplorer.Wpf.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="Themes/ExpressionDark/Theme.xaml"/>-->
+
+                <!--  MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive!  -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />-->
+
+                <!--  Accent and AppTheme setting  -->
+                <!--  see https://mahapps.com/guides/styles.html  -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Cyan.xaml" />
+
+                <!--  animated single-row tabs in MahApps  -->
+                <!--  enabling this destroys scrollbars  -->
+                <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />-->
+
+                <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/Generic.xaml" />
+
+                <ResourceDictionary Source="Styles/MahApps.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="GridSplitter">
+                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}" />
+                <Setter Property="Focusable" Value="False" />
+                <Setter Property="Opacity" Value=".3" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Opacity" Value="1" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style
+                x:Key="vertical"
+                BasedOn="{StaticResource {x:Type GridSplitter}}"
+                TargetType="GridSplitter">
+                <Setter Property="Width" Value="3" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+            </Style>
+
+            <Style
+                x:Key="horizontal"
+                BasedOn="{StaticResource {x:Type GridSplitter}}"
+                TargetType="GridSplitter">
+                <Setter Property="Height" Value="3" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+            </Style>
+
+
+            <Style
+                BasedOn="{StaticResource MahAppsTabablzControlStyle}"
+                TargetType="{x:Type dragablz:TabablzControl}">
+                <Setter Property="ShowDefaultAddButton" Value="False" />
+                <Setter Property="ShowDefaultCloseButton" Value="True" />
+            </Style>
+
+            <Style
+                x:Key="NarrowGroup"
+                BasedOn="{StaticResource MahApps.Styles.GroupBox}"
+                TargetType="GroupBox">
+                <Setter Property="Margin" Value="0,0,0,20" />
+            </Style>
+
+            <Style
+                BasedOn="{StaticResource MahApps.Styles.ComboBox}"
+                TargetType="ComboBox">
+                <Setter Property="BorderThickness" Value="0" />
+            </Style>
+
+            <Style
+                x:Key="tb"
+                TargetType="Button">
+                <Setter Property="Width" Value="35" />
+                <Setter Property="Height" Value="35" />
+                <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <Style
+                x:Key="ttb"
+                TargetType="ToggleButton">
+                <Setter Property="Width" Value="35" />
+                <Setter Property="Height" Value="35" />
+                <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <Style
+                x:Key="tbb"
+                TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="Padding" Value="5,0,0,0" />
+            </Style>
+
+            <Style
+                BasedOn="{StaticResource MahApps.Styles.ContextMenu}"
+                TargetType="ContextMenu">
+                <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.Accent}" />
+                <Setter Property="Opacity" Value=".9" />
+            </Style>
+
+            <Style
+                BasedOn="{StaticResource MahApps.Styles.MenuItem}"
+                TargetType="MenuItem">
+                <Setter Property="Padding" Value="0,0,0,0" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Height" Value="27" />
+                <Setter Property="MinHeight" Value="0" />
+                <Setter Property="FontSize" Value="11" />
+            </Style>
+
+            <Style TargetType="Hyperlink">
+                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.White}" />
+                <Setter Property="TextDecorations" Value="None" />
+            </Style>
+
+            <Style
+                x:Key="DataGridLink"
+                TargetType="Hyperlink">
+                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Black}" />
+                <Setter Property="TextDecorations" Value="None" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Accent}" />
+                        <Setter Property="TextDecorations" Value="Underline" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style
+                x:Key="MenuIcon"
+                TargetType="Image">
+                <Setter Property="Width" Value="15" />
+                <Setter Property="Height" Value="15" />
+                <Setter Property="Margin" Value="5,0,0,0" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+            </Style>
+
+            <Style
+                x:Key="TreeIcon"
+                TargetType="Image">
+                <Setter Property="Width" Value="15" />
+                <Setter Property="Height" Value="15" />
+                <Setter Property="Margin" Value="0,0,5,0" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+            </Style>
+
+            <VisualBrush
+                x:Key="DotFillBrush"
+                TileMode="Tile"
+                Viewbox="0,0,4,4"
+                ViewboxUnits="Absolute"
+                Viewport="0,0,4,4"
+                ViewportUnits="Absolute">
+                <VisualBrush.Visual>
+                    <Rectangle
+                        Width="2"
+                        Height="4"
+                        Fill="{DynamicResource MahApps.Brushes.Accent}"
+                        Stroke="{DynamicResource MahApps.Brushes.Accent}" />
+                </VisualBrush.Visual>
+            </VisualBrush>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

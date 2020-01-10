@@ -1,0 +1,35 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+   <DrawingImage.Drawing>
+      <DrawingGroup ClipGeometry="M0,0 V32 H32 V0 H0 Z">
+         <DrawingGroup Opacity="1">
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF4391B2" Geometry="F1 M32,32z M0,0z M27,24C26.4473,24,26,23.5522,26,23L26,20C26,19.4478 26.4473,19 27,19 27.5527,19 28,19.4478 28,20L28,23C28,23.5522,27.5527,24,27,24z" />
+            </DrawingGroup>
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF4391B2" Geometry="F1 M32,32z M0,0z M23,24C22.4473,24,22,23.5522,22,23L22,20C22,19.4478 22.4473,19 23,19 23.5527,19 24,19.4478 24,20L24,23C24,23.5522,23.5527,24,23,24z" />
+            </DrawingGroup>
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF4391B2" Geometry="F1 M32,32z M0,0z M19,24C18.4473,24,18,23.5522,18,23L18,20C18,19.4478 18.4473,19 19,19 19.5527,19 20,19.4478 20,20L20,23C20,23.5522,19.5527,24,19,24z" />
+            </DrawingGroup>
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF4391B2" Geometry="F1 M32,32z M0,0z M15,24C14.4473,24,14,23.5522,14,23L14,20C14,19.4478 14.4473,19 15,19 15.5527,19 16,19.4478 16,20L16,23C16,23.5522,15.5527,24,15,24z" />
+            </DrawingGroup>
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF4391B2" Geometry="F1 M32,32z M0,0z M9,24C8.4473,24,8,23.5522,8,23L8,20C8,19.4478 8.4473,19 9,19 9.5527,19 10,19.4478 10,20L10,23C10,23.5522,9.5527,24,9,24z" />
+            </DrawingGroup>
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF4391B2" Geometry="F1 M32,32z M0,0z M5,24C4.4473,24,4,23.5522,4,23L4,20C4,19.4478 4.4473,19 5,19 5.5527,19 6,19.4478 6,20L6,23C6,23.5522,5.5527,24,5,24z" />
+            </DrawingGroup>
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF48B1DD" Geometry="F1 M32,32z M0,0z M29,14C29,14.55 29.45,15 30,15 30.55,15 31,15.45 31,16L31,20C31,20.55,30.55,21,30,21L2,21C1.45,21,1,20.55,1,20L1,16C1,15.45 1.45,15 2,15 2.55,15 3,14.55 3,14 3,13.45 2.55,13 2,13 1.45,13 1,12.55 1,12L1,9C1,8.45,1.45,8,2,8L30,8C30.55,8,31,8.45,31,9L31,12C31,12.55 30.55,13 30,13 29.45,13 29,13.45 29,14z" />
+            </DrawingGroup>
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF96CEE5" Geometry="F1 M32,32z M0,0z M12,12L12,17C12,17.55,11.55,18,11,18L7,18C6.45,18,6,17.55,6,17L6,12C6,11.45,6.45,11,7,11L11,11C11.55,11,12,11.45,12,12z" />
+            </DrawingGroup>
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FF96CEE5" Geometry="F1 M32,32z M0,0z M26,12L26,17C26,17.55,25.55,18,25,18L14,18C13.45,18,13,17.55,13,17L13,12C13,11.45,13.45,11,14,11L25,11C25.55,11,26,11.45,26,12z" />
+            </DrawingGroup>
+         </DrawingGroup>
+      </DrawingGroup>
+   </DrawingImage.Drawing>
+</DrawingImage>

@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="StorAmp.Wpf.Wpf.Blobs.AclEntryEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:local="clr-namespace:StorAmp.Wpf.Wpf.Blobs"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+   <StackPanel Orientation="Vertical" IsEnabled="False">
+      <TextBlock Text="{Binding Identity}"/>
+      <StackPanel Orientation="Horizontal">
+         <CheckBox IsChecked="{Binding CanRead}" Content="R" Margin="0,0,5,0"/>
+         <CheckBox IsChecked="{Binding CanWrite}" Content="W" Margin="0,0,5,0"/>
+         <CheckBox IsChecked="{Binding CanExecute}" Content="X" Margin="0,0,5,0"/>
+      </StackPanel>
+   </StackPanel>
+</UserControl>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SyntaxDefinition name="AppVeyor-XAML" extensions=".yml .yaml" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+   <Color name="Comment" foreground="LightGray" exampleText="#comment" />
+   <Color name="Key" fontWeight="bold" foreground="Black" background="#FFEEEEEE" exampleText="key:" />
+   <Color name="SubKey" fontWeight="bold" foreground="Black" exampleText="- key:" />
+   <Color name="DoubleQuoted" foreground="Green" exampleText="&quot;hello&quot;" />
+   <Color name="EscapeSequence" foreground="Blue" exampleText="\t\r\n" />
+   <Color name="SingleQuoted" foreground="Purple" exampleText="'hello'" />
+   <Color name="PsVariable" foreground="Red" exampleText="$Variable" />
+   <Color name="Block" background="Yellow" exampleText="" />
+
+   <RuleSet ignoreCase="true">
+      <!-- <Span color="Block" multiline="true">
+      <Begin>^environment:</Begin>
+      <End>(?=\r?\n\S)</End>
+    </Span> -->
+      <Rule color="Comment">
+         \#.*
+      </Rule>
+      <Rule color="Key">
+         ^\w+?:
+      </Rule>
+      <Rule color="SubKey">
+         (?&lt;=^\s*(-\s+)?)\w+?:
+      </Rule>
+      <Rule color="PsVariable">
+         \$[a-z0-9_:]+
+      </Rule>
+      <Span color="PsVariable" multiline="false">
+         <Begin>\$\(</Begin>
+         <End>\)</End>
+      </Span>
+      <Span color="DoubleQuoted" multiline="false">
+         <Begin>"</Begin>
+         <End>"</End>
+         <RuleSet>
+            <Span begin="\\" end="."  color="EscapeSequence"/>
+            <Rule color="PsVariable">
+               \$[a-z0-9_:]+
+            </Rule>
+            <Span color="PsVariable" multiline="false">
+               <Begin>\$\(</Begin>
+               <End>\)</End>
+            </Span>
+         </RuleSet>
+      </Span>
+      <Span color="SingleQuoted" multiline="false">
+         <Begin>'</Begin>
+         <End>'</End>
+         <RuleSet>
+            <Span begin="\\" end="'" />
+         </RuleSet>
+      </Span>
+   </RuleSet>
+</SyntaxDefinition>

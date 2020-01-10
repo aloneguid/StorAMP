@@ -1,0 +1,21 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+   <DrawingImage.Drawing>
+      <DrawingGroup ClipGeometry="M0,0 V60.001 H64 V0 H0 Z">
+         <DrawingGroup Opacity="1">
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FFCCA352" Geometry="F0 M64,60.001z M0,0z M60,4.001L24,4.001C24,1.792,22.209,0,20,0L4,0C1.791,0,0,1.792,0,4.001L0,8 0,14.001 0,16.001C0,18.21,1.791,20.001,4,20.001L60,20.001C62.209,20.001,64,18.21,64,16.001L64,8C64,5.791,62.209,4.001,60,4.001z" />
+            </DrawingGroup>
+         </DrawingGroup>
+         <DrawingGroup Opacity="1">
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M64,60.001z M0,0z M56,8L8,8C5.791,8,4,9.791,4,12.001L4,16.001C4,18.21,5.791,20.001,8,20.001L56,20.001C58.209,20.001,60,18.21,60,16.001L60,12.001C60,9.791,58.209,8,56,8z" />
+            </DrawingGroup>
+         </DrawingGroup>
+         <DrawingGroup Opacity="1">
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FFFFCC66" Geometry="F1 M64,60.001z M0,0z M60,12.001L4,12.001C1.791,12.001,0,13.792,0,16.001L0,56.001C0,58.21,1.791,60.001,4,60.001L60,60.001C62.209,60.001,64,58.21,64,56.001L64,16.001C64,13.792,62.209,12.001,60,12.001z" />
+            </DrawingGroup>
+         </DrawingGroup>
+      </DrawingGroup>
+   </DrawingImage.Drawing>
+</DrawingImage>

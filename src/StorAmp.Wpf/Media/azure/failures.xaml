@@ -1,0 +1,28 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <DrawingImage.Drawing>
+        <DrawingGroup ClipGeometry="M0,0 V50 H50 V0 H0 Z">
+            <DrawingGroup Opacity="1">
+                <GeometryDrawing
+                    Brush="#FFEB008B"
+                    Geometry="F1 M50,50z M0,0z M7,16L12,16 12,36 7,36z M17,11L22,11 22,36 17,36z M27,18L32,18 32,36 27,36z M37,14L42,14 42,36 37,36z" />
+                <GeometryDrawing
+                    Brush="#FFFF8C00"
+                    Geometry="F1 M50,50z M0,0z M25.3,39.8C24.4,39.8 23.7,39.4 23.3,38.6 22.9,37.8 22.9,36.9 23.3,36.2L27.7,28.5 32.1,21.2C32.6,20.4 33.3,20 34.1,20 34.9,20 35.6,20.4 36,21.2L44.8,36.3C45.3,37.1 45.3,38 44.9,38.7 44.5,39.4 43.7,39.8 42.8,39.8L25.3,39.8z" />
+                <GeometryDrawing
+                    Brush="#FFFFFFFF"
+                    Geometry="F1 M50,50z M0,0z M34,20.6C34.5,20.6,35,20.9,35.4,21.5L39.8,29.1 44.2,36.6C44.9,37.8,44.2,39.2,42.8,39.2L25.3,39.2C23.9,39.2,23.2,37.8,23.9,36.6L28.3,28.8 32.7,21.5C33,20.9,33.5,20.6,34,20.6 M34,19.3C33,19.3,32,19.9,31.5,20.8L27.1,28.1 22.7,35.9C22.1,36.9 22.1,38 22.7,39 23.2,39.9 24.2,40.5 25.3,40.5L42.7,40.5C43.8,40.5 44.8,39.9 45.3,39 45.8,38.1 45.8,36.9 45.2,35.9L40.8,28.4 36.4,20.8C36,19.9,35,19.3,34,19.3z" />
+                <GeometryDrawing Brush="#FFFFFFFF">
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry
+                            Center="34,34.9"
+                            RadiusX="1.4"
+                            RadiusY="1.4" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing
+                    Brush="#FFFFFFFF"
+                    Geometry="F1 M50,50z M0,0z M34.3,26.2L32.8,26.2 33.2,32.9 35,32.9 35.4,26.2z" />
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingImage.Drawing>
+</DrawingImage>

@@ -1,0 +1,94 @@
+﻿<UserControl
+    x:Class="StorAmp.Wpf.Wpf.BlobStoragePanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CloudExplorer.Wpf.Wpf"
+    xmlns:localb="clr-namespace:StorAmp.Wpf.Wpf.Blobs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xx="clr-namespace:StorAmp.Wpf.MarkupExtensions"
+    d:DesignHeight="450"
+    d:DesignWidth="400"
+    Background="{DynamicResource MahApps.Brushes.White}"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <conv:FileSizeConverter x:Key="FSC" />
+        <conv:FileIconConverter x:Key="FIC" />
+        <conv:StorageTypeIconConverter x:Key="STIC" />
+        <conv:GenericConverter x:Key="gc" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="3" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+            <local:BlobListPanel IsEnabled="{Binding IsLoading, Converter={StaticResource gc}, ConverterParameter=-1}" />
+            <GridSplitter
+                Grid.Column="1"
+                Width="3"
+                HorizontalAlignment="Stretch"
+                Background="{DynamicResource MahApps.Brushes.Accent}"
+                Focusable="False" />
+            <localb:FolderBrowser
+                Grid.Column="2"
+                DataContext="{Binding FolderBrowser}" />
+        </Grid>
+
+        <Grid Visibility="{Binding IsViewing, Converter={StaticResource gc}}">
+            <local:ViewEditControl
+                x:Name="ViewEdit"
+                DataContext="{Binding ViewEdit}" />
+        </Grid>
+
+        <Grid Visibility="{Binding IsLoading, Converter={StaticResource gc}}">
+            <Controls:ProgressRing
+                x:Name="ProgressIndicator"
+                IsActive="{Binding IsLoading}" />
+        </Grid>
+
+        <Grid Visibility="{Binding HasError, Converter={StaticResource gc}}">
+            <!--<StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock
+                    Foreground="Red"
+                    Text="{Binding ErrorMessage}" />
+                <TextBlock Text="{Binding ErrorDetails}" />
+            </StackPanel>-->
+
+            <Image
+                Width="200"
+                Height="200"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Opacity=".4"
+                Source="{xx:XamlImage azure/failures}" />
+
+            <GroupBox
+                Width="600"
+                Height="200"
+                Header="Failed to load">
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock
+                            FontWeight="Bold"
+                            Text="Message" />
+                        <TextBlock Text="{Binding ErrorMessage}" />
+                        <TextBlock
+                            FontWeight="Bold"
+                            Text="Details" />
+                        <TextBlock Text="{Binding ErrorDetails}" />
+                    </StackPanel>
+                </ScrollViewer>
+            </GroupBox>
+        </Grid>
+    </Grid>
+
+</UserControl>

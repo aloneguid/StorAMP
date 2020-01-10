@@ -1,0 +1,18 @@
+﻿<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+   <DrawingImage.Drawing>
+      <DrawingGroup ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+         <GeometryDrawing Brush="#FF4285F4" Geometry="F1 M128,128z M0,0z M126.47,58.12L100.17,12.38A11.56,11.56,0,0,0,90.31,6.5L37.7,6.5A11.55,11.55,0,0,0,27.84,12.38L1.53,58A11.48,11.48,0,0,0,1.53,69.44L27.83,115.44A11.77,11.77,0,0,0,37.69,121.53L90.3,121.53A11.73,11.73,0,0,0,100.17,115.47L126.47,69.73A11.73,11.73,0,0,0,126.47,58.12z" />
+         <GeometryDrawing Geometry="F1 M128,128z M0,0z M85.49,50.55L49.31,53.88 42.31,60.88 48.31,66.88 42.36,77.3 86.56,121.5 90.3,121.5A11.73,11.73,0,0,0,100.17,115.44L118.5,83.56z">
+            <GeometryDrawing.Brush>
+               <SolidColorBrush Color="#FF000000" Opacity="0.070000000298023" />
+            </GeometryDrawing.Brush>
+         </GeometryDrawing>
+         <DrawingGroup Opacity="1">
+            <DrawingGroup Opacity="1">
+               <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M128,128z M0,0z M84.7,50.27L43.26,50.27A1.22,1.22,0,0,0,42,51.48L42,60.05A1.21,1.21,0,0,0,43.21,61.26L84.7,61.26A1.22,1.22,0,0,0,85.91,60.05L85.91,51.48A1.22,1.22,0,0,0,84.7,50.27 M78.29,58.27A2.48,2.48,0,1,1,80.77,55.79A2.48,2.48,0,0,1,78.29,58.27" />
+               <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M128,128z M0,0z M84.7,66.74L43.26,66.74A1.22,1.22,0,0,0,42,68L42,76.57A1.22,1.22,0,0,0,43.21,77.78L84.7,77.78A1.22,1.22,0,0,0,85.91,76.57L85.91,67.95A1.22,1.22,0,0,0,84.7,66.74 M78.29,74.74A2.48,2.48,0,1,1,80.77,72.26A2.48,2.48,0,0,1,78.29,74.74" />
+            </DrawingGroup>
+         </DrawingGroup>
+      </DrawingGroup>
+   </DrawingImage.Drawing>
+</DrawingImage>

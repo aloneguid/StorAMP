@@ -13,6 +13,7 @@ variables:
   solution: 'src/StorAmp.sln'
   buildPlatform: 'x86|x64|ARM'
   buildConfiguration: 'Release'
+  publishRuntime: 'win10-x86'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
 
 stages:
@@ -45,6 +46,6 @@ stages:
       inputs:
         command: 'publish'
         publishWebProjects: false
-        arguments: '-c $(BuildConfiguration) -r $(PublishRuntime) -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:PublishTrimmed=true'
+        arguments: '-c $(BuildConfiguration) -r $(PublishRuntime) -p:PublishSingleFile=true'
         zipAfterPublish: false
         workingDirectory: 'src/StorAmp.Wpf'

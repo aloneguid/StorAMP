@@ -15,22 +15,36 @@ variables:
   buildConfiguration: 'Release'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
 
-steps:
-- task: NuGetToolInstaller@1
+stages:
+- stage: Build
+  jobs:
+  - job: UWP
+    steps:
+    - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+    - task: NuGetCommand@2
+      inputs:
+        restoreSolution: '$(solution)'
 
-- task: SecureFiles@1
-  inputs:
-    secureFileName: 'store.pfx'
-    outputDirectory: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
-    removeSecureFile: true
+    - task: SecureFiles@1
+      inputs:
+        secureFileName: 'store.pfx'
+        outputDirectory: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
+        removeSecureFile: true
 
-- task: VSBuild@1
-  inputs:
-    platform: 'x86'
-    solution: '$(solution)'
-    configuration: '$(buildConfiguration)'
-    msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+    - task: VSBuild@1
+      inputs:
+        platform: 'x86'
+        solution: '$(solution)'
+        configuration: '$(buildConfiguration)'
+        msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+
+  - job: SingleExe
+    steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'publish'
+        publishWebProjects: false
+        arguments: '-c $(BuildConfiguration) -r $(PublishRuntime) -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:PublishTrimmed=true'
+        zipAfterPublish: false
+        workingDirectory: 'src/StorAmp.Wpf'

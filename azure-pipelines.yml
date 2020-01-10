@@ -46,6 +46,6 @@ stages:
       inputs:
         command: 'publish'
         publishWebProjects: false
-        arguments: '-c $(BuildConfiguration) -r $(PublishRuntime) -p:PublishSingleFile=true'
+        arguments: '-c $(BuildConfiguration) -r $(PublishRuntime) -p:PublishSingleFile=true -o:exepublish'
         zipAfterPublish: false
         workingDirectory: 'src/StorAmp.Wpf'

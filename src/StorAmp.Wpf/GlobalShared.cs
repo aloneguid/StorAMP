@@ -1,5 +1,6 @@
 ﻿using System;
 using Serilog;
+using StorAmp.Core.Logging;
 
 namespace StorAmp.Wpf
 {

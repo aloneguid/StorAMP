@@ -66,6 +66,7 @@
     <GenerateTestArtifacts>False</GenerateTestArtifacts>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <PackageCertificateKeyFile>store.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>6D345484CD796020819B7C169BD9769FF641AB7F</PackageCertificateThumbprint>
     <EntryPointProjectUniqueName>..\StorAmp.Wpf\StorAmp.Wpf.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>

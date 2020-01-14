@@ -56,6 +56,21 @@ stages:
 
   - job: SingleExe
     steps:
+
+    - task: petersendev.dotnet-global-tool-installer.DotnetGlobalToolInstaller.DotnetGlobalToolInstaller@0
+      displayName: 'install housework'
+      inputs:
+        name: housework
+
+    - script: 'housework author src/*.csproj -s build.ini -r'
+      displayName: 'author projects'
+
+    - script: 'housework setbuildnumber %Version% -s build.ini'
+      displayName: 'set build number'
+
+    - script: 'housework pushvars Version -s build.ini'
+      displayName: 'push variables'
+
     - task: DotNetCoreCLI@2
       inputs:
         command: 'publish'

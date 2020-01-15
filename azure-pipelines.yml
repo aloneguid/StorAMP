@@ -33,6 +33,17 @@ stages:
         outputDirectory: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
         removeSecureFile: true
 
+    - task: petersendev.dotnet-global-tool-installer.DotnetGlobalToolInstaller.DotnetGlobalToolInstaller@0
+      displayName: 'install housework'
+      inputs:
+        name: housework
+
+    - script: 'housework author src/*.csproj -s build.ini -r'
+      displayName: 'author projects'
+
+    - script: 'housework setbuildnumber %Version% -s build.ini'
+      displayName: 'set build number'
+
     - task: VSBuild@1
       inputs:
         platform: 'x86'
@@ -42,6 +53,18 @@ stages:
 
   - job: SingleExe
     steps:
+
+    - task: petersendev.dotnet-global-tool-installer.DotnetGlobalToolInstaller.DotnetGlobalToolInstaller@0
+      displayName: 'install housework'
+      inputs:
+        name: housework
+
+    - script: 'housework author src/*.csproj -s build.ini -r'
+      displayName: 'author projects'
+
+    - script: 'housework setbuildnumber %Version% -s build.ini -v'
+      displayName: 'set build number'
+
     - task: DotNetCoreCLI@2
       inputs:
         command: 'publish'

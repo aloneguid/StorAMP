@@ -23,6 +23,7 @@
      <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="3.0.4" />
      <PackageReference Include="Serilog.Sinks.Trace" Version="2.1.0" />
      <PackageReference Include="Humanizer.Core" Version="2.7.9" />
+     <PackageReference Include="StackExchange.Redis" Version="2.0.601" />
       <PackageReference Include="Storage.Net" Version="9.2.2" />
       <PackageReference Include="Storage.Net.Amazon.Aws" Version="9.2.2" />
       <PackageReference Include="Storage.Net.Ftp" Version="9.2.2" />

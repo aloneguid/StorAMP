@@ -7,6 +7,7 @@ using Storage.Net.ConnectionString;
 using StorAmp.Core.Services;
 using StorAmp.Core.ViewModel.Blobs.Definitions;
 using StorAmp.Core.ViewModel.Msg.Definitions;
+using StorAmp.Core.ViewModel.Redis;
 
 namespace StorAmp.Core.Model.Account
 {
@@ -30,6 +31,7 @@ namespace StorAmp.Core.Model.Account
 #if DEBUG
          Register(new AzureEventHubStorageAccountDefinition());
          Register(new AzureStorageQueuesAccountDefinition());
+         Register(new RedisAccountDefinition());
 #endif
       }
 

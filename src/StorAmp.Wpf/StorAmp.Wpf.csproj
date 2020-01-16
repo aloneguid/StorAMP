@@ -53,6 +53,7 @@
      <Page Remove="Media\account\google.storage.xaml" />
      <Page Remove="Media\account\inmemory - Copy.xaml" />
      <Page Remove="Media\account\inmemory.xaml" />
+     <Page Remove="Media\account\redis.xaml" />
      <Page Remove="Media\app.xaml" />
      <Page Remove="Media\azure\account.xaml" />
      <Page Remove="Media\azure\directory.xaml" />
@@ -121,6 +122,10 @@
         <Generator>MSBuild:Compile</Generator>
       </Resource>
       <Resource Include="Media\account\aws.s3.xaml">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:Compile</Generator>
+      </Resource>
+      <Resource Include="Media\account\redis.xaml">
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </Resource>

@@ -1,0 +1,117 @@
+﻿<UserControl
+    x:Class="StorAmp.Wpf.Wpf.Redis.RedisPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:StorAmp.Wpf.Controls"
+    xmlns:conv="clr-namespace:StorAmp.Wpf.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:StorAmp.Wpf.Wpf.Redis"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:StorAmp.Core.ViewModel.Redis;assembly=StorAmp.Core"
+    d:DataContext="{d:DesignInstance vm:RedisViewModel,
+                                     IsDesignTimeCreatable=True}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <conv:GenericConverter x:Key="gc" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <ToolBarTray>
+            <ToolBar>
+                <Button
+                    Command="{Binding RefreshKeysCommand}"
+                    Style="{DynamicResource tb}"
+                    ToolTip="Reload keys">
+                    <controls:WinUISymbol Symbol="Refresh" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <ListView
+                ItemsSource="{Binding Keys}"
+                SelectedItem="{Binding SelectedKey}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock
+                            Text="{Binding Name}"
+                            ToolTip="{Binding Type}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <GridSplitter
+                Grid.Column="1"
+                Style="{StaticResource vertical}" />
+
+            <Grid
+                Grid.Column="2"
+                Margin="5,0,5,0">
+                <StackPanel Orientation="Vertical">
+                    <GroupBox
+                        DataContext="{Binding SelectedKey, Mode=OneWay}"
+                        Header="Info">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Name: " />
+                                <TextBlock
+                                    FontWeight="Bold"
+                                    Text="{Binding Name}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Type: " />
+                                <TextBlock
+                                    FontWeight="Bold"
+                                    Text="{Binding Type}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox
+                        Margin="0,5,0,0"
+                        Header="Value">
+                        <StackPanel>
+                            <TextBox
+                                IsReadOnly="True"
+                                Text="{Binding StringValue}"
+                                Visibility="{Binding StringValue, Converter={StaticResource gc}}" />
+
+                            <DataGrid
+                                HorizontalAlignment="Stretch"
+                                AutoGenerateColumns="False"
+                                GridLinesVisibility="Vertical"
+                                IsReadOnly="True"
+                                ItemsSource="{Binding HashValue.Entries}"
+                                Visibility="{Binding HashValue, Converter={StaticResource gc}}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Key" />
+                                    <DataGridTextColumn
+                                        Width="*"
+                                        Binding="{Binding Value}"
+                                        Header="Value" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

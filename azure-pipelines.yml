@@ -84,9 +84,9 @@ stages:
     - task: CopyFiles@2
       displayName: 'copy generated .exe'
       inputs:
-        SourceFolder: src
-        Contents: 'src/StorAmp.Wpf/exepublish/**/*'
-        TargetFolder: ' $(build.artifactstagingdirectory)'
+        SourceFolder: 'src/StorAmp.Wpf/exepublish'
+        Contents: '*'
+        TargetFolder: '$(build.artifactstagingdirectory)'
         CleanTargetFolder: true
         OverWrite: true
         flattenFolders: true

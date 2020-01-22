@@ -66,8 +66,10 @@ stages:
     - script: 'housework author src/*.csproj -s build.ini -r'
       displayName: 'author projects'
 
-    - script: 'housework setbuildnumber %Version% -s build.ini -v'
-      displayName: 'set build number'
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'housework setbuildnumber %Version% -s build.ini -v'
 
     - task: DotNetCoreCLI@2
       inputs:

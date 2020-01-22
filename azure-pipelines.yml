@@ -39,14 +39,16 @@ stages:
       inputs:
         name: housework
 
-    - script: 'housework author src/*.csproj -s build.ini -r'
-      displayName: 'author projects'
-
-    - script: 'housework author src/*.appxmanifest -s build.ini -r'
-      displayName: 'author projects'
-
-    - script: 'housework setbuildnumber %Version% -s build.ini -v'
-      displayName: 'set build number'
+    - task: PowerShell@2
+      displayName: 'hw authoring'
+      inputs:
+        targetType: 'inline'
+        script: |
+          housework author src/*.csproj -s build.ini -r
+          
+          housework author src/*.appxmanifest -s build.ini -r
+          
+          housework setbuildnumber %Version% -s build.ini -v
 
     - task: VSBuild@1
       inputs:

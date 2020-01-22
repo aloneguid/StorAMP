@@ -39,14 +39,16 @@ stages:
       inputs:
         name: housework
 
-    - script: 'housework author src/*.csproj -s build.ini -r'
-      displayName: 'author projects'
-
-    - script: 'housework author src/*.appxmanifest -s build.ini -r'
-      displayName: 'author projects'
-
-    - script: 'housework setbuildnumber %Version% -s build.ini -v'
-      displayName: 'set build number'
+    - task: PowerShell@2
+      displayName: 'hw authoring'
+      inputs:
+        targetType: 'inline'
+        script: |
+          housework author src/*.csproj -s build.ini -r
+          
+          housework author src/*.appxmanifest -s build.ini -r -v
+          
+          housework setbuildnumber %Version% -s build.ini -v
 
     - task: VSBuild@1
       inputs:
@@ -84,9 +86,9 @@ stages:
     - task: CopyFiles@2
       displayName: 'copy generated .exe'
       inputs:
-        SourceFolder: src
-        Contents: 'src/StorAmp.Wpf/exepublish/**/*'
-        TargetFolder: ' $(build.artifactstagingdirectory)'
+        SourceFolder: 'src/StorAmp.Wpf/exepublish'
+        Contents: '*'
+        TargetFolder: '$(build.artifactstagingdirectory)'
         CleanTargetFolder: true
         OverWrite: true
         flattenFolders: true
@@ -96,3 +98,26 @@ stages:
       inputs:
         ArtifactName: exe
 
+- stage: Release
+  dependsOn: ['Build']
+  #condition: "and( eq(variables['Build.SourceBranch'], 'refs/heads/master'), succeeded('Build') )"
+  jobs:
+  - deployment: Universal
+    environment: live
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'exe'
+              downloadPath: '$(System.ArtifactsDirectory)'
+          - task: AzureFileCopy@3
+            inputs:
+              SourcePath: '$(System.ArtifactsDirectory)/exe/*'
+              azureSubscription: 'PAYG (personal)'
+              Destination: 'AzureBlob'
+              storage: 'isolineltd'
+              ContainerName: 'storamp'

@@ -85,7 +85,7 @@ stages:
       displayName: 'copy generated .exe'
       inputs:
         SourceFolder: src
-        Contents: 'exepublish/*'
+        Contents: 'src/StorAmp.Wpf/exepublish/**/*'
         TargetFolder: ' $(build.artifactstagingdirectory)'
         CleanTargetFolder: true
         OverWrite: true

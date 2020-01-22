@@ -41,7 +41,10 @@ stages:
     - script: 'housework author src/*.csproj -s build.ini -r'
       displayName: 'author projects'
 
-    - script: 'housework setbuildnumber %Version% -s build.ini'
+    - script: 'housework author src/*.appxmanifest -s build.ini -r'
+      displayName: 'author projects'
+
+    - script: 'housework setbuildnumber %Version% -s build.ini -v'
       displayName: 'set build number'
 
     - task: VSBuild@1

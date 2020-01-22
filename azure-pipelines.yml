@@ -98,3 +98,26 @@ stages:
       inputs:
         ArtifactName: exe
 
+- stage: Release
+  dependsOn: ['Build']
+  #condition: "and( eq(variables['Build.SourceBranch'], 'refs/heads/master'), succeeded('Build') )"
+  jobs:
+  - deployment: Universal
+    environment: live
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'exe'
+              downloadPath: '$(System.ArtifactsDirectory)'
+          - task: AzureFileCopy@3
+            inputs:
+              SourcePath: '$(System.ArtifactsDirectory)/exe/*'
+              azureSubscription: 'PAYG (personal)'
+              Destination: 'AzureBlob'
+              storage: 'isolineltd'
+              ContainerName: 'storamp'

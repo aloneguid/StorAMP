@@ -87,7 +87,7 @@ stages:
         OverWrite: true
         flattenFolders: true
 
-     - task: PublishBuildArtifacts@1
+    - task: PublishBuildArtifacts@1
       displayName: 'archive .exe'
       inputs:
         ArtifactName: exe

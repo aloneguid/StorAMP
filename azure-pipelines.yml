@@ -46,7 +46,7 @@ stages:
         script: |
           housework author src/*.csproj -s build.ini -r
           
-          housework author src/*.appxmanifest -s build.ini -r
+          housework author src/*.appxmanifest -s build.ini -r -v
           
           housework setbuildnumber %Version% -s build.ini -v
 

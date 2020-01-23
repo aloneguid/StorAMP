@@ -18,6 +18,8 @@ using EventLog = Serilog.EventLog;
 using StorAmp.Wpf.Services;
 using StorAmp.Core.ViewModel.Msg;
 using StorAmp.Wpf.Wpf.Msg;
+using StorAmp.Core.ViewModel.Redis;
+using StorAmp.Wpf.Wpf.Redis;
 
 namespace CloudExplorer.Wpf
 {
@@ -215,6 +217,9 @@ namespace CloudExplorer.Wpf
 
          if(viewModel is MessengerViewModel)
             return new MessengerPanel { DataContext = viewModel };
+
+         if(viewModel is RedisViewModel)
+            return new RedisPanel { DataContext = viewModel };
 
          return null;
       }

@@ -8,6 +8,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using StorAmp.Core.Model;
 using StorAmp.Core.ViewModel.Msg;
+using StorAmp.Core.ViewModel.Redis;
 
 namespace StorAmp.Core.ViewModel
 {
@@ -58,6 +59,10 @@ namespace StorAmp.Core.ViewModel
          else if(connectedAccount.System == "ai")
          {
             ActiveStorageAccounts.Add(new ApplicationInsightsPanelViewModel(connectedAccount));
+         }
+         else if(connectedAccount.System == "redis")
+         {
+            ActiveStorageAccounts.Add(new RedisViewModel(connectedAccount));
          }
          else
          {

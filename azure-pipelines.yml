@@ -121,7 +121,7 @@ stages:
   dependsOn: ['Build']
   #condition: "and( eq(variables['Build.SourceBranch'], 'refs/heads/master'), succeeded('Build') )"
   jobs:
-  - deployment: Universal
+  - deployment: SingleExe
     environment: live
     strategy:
       runOnce:
@@ -141,3 +141,25 @@ stages:
               Destination: 'AzureBlob'
               storage: 'isolineltd'
               ContainerName: 'storamp'
+  - deployment: Store
+    environment: live
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'uwp'
+              downloadPath: '$(System.ArtifactsDirectory)'
+
+          #- task: store-publish@0
+          #  inputs:
+          #    serviceEndpoint: 'UWP'
+          #    appId: '9NKV1D43NLL3'
+          #    packagePath: '$(System.ArtifactsDirectory)/uwp/*.msixupload'
+          #    force: false
+          #    skipPolling: false'
+
+          

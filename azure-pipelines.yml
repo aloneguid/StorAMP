@@ -154,12 +154,11 @@ stages:
               artifactName: 'uwp'
               downloadPath: '$(System.ArtifactsDirectory)'
 
-          #- task: store-publish@0
-          #  inputs:
-          #    serviceEndpoint: 'UWP'
-          #    appId: '9NKV1D43NLL3'
-          #    packagePath: '$(System.ArtifactsDirectory)/uwp/*.msixupload'
-          #    force: false
-          #    skipPolling: false'
-
+          - task: store-publish@0
+            inputs:
+              serviceEndpoint: 'UWP'
+              appId: '9NKV1D43NLL3'
+              packagePath: '$(System.ArtifactsDirectory)/uwp/*.msixupload'
+              force: false
+              skipPolling: false
           

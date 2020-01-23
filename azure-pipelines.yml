@@ -60,7 +60,7 @@ stages:
     - task: CopyFiles@2
       displayName: 'copy generated uwp packages'
       inputs:
-        SourceFolder: 'AppPackages'
+        SourceFolder: 'AppxPackages'
         Contents: '*'
         TargetFolder: '$(build.artifactstagingdirectory)/uwp'
         CleanTargetFolder: true

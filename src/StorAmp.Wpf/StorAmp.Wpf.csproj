@@ -53,6 +53,7 @@
      <Page Remove="Media\account\google.storage.xaml" />
      <Page Remove="Media\account\inmemory - Copy.xaml" />
      <Page Remove="Media\account\inmemory.xaml" />
+     <Page Remove="Media\account\redis.xaml" />
      <Page Remove="Media\app.xaml" />
      <Page Remove="Media\azure\account.xaml" />
      <Page Remove="Media\azure\directory.xaml" />
@@ -88,7 +89,7 @@
 
    <ItemGroup>
       <PackageReference Include="AvalonEdit" Version="6.0.1" />
-      <PackageReference Include="Config.Net" Version="4.14.20" />
+      <PackageReference Include="Config.Net" Version="4.14.23" />
       <PackageReference Include="CsvHelper" Version="12.3.2" />
       <PackageReference Include="Dragablz" Version="0.0.3.203" />
       <PackageReference Include="Extended.Wpf.Toolkit" Version="3.7.0" />
@@ -121,6 +122,10 @@
         <Generator>MSBuild:Compile</Generator>
       </Resource>
       <Resource Include="Media\account\aws.s3.xaml">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:Compile</Generator>
+      </Resource>
+      <Resource Include="Media\account\redis.xaml">
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </Resource>

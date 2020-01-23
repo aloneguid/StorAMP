@@ -114,9 +114,10 @@ stages:
               downloadType: 'single'
               artifactName: 'exe'
               downloadPath: '$(System.ArtifactsDirectory)'
+
           - task: AzureFileCopy@3
             inputs:
-              SourcePath: '$(System.ArtifactsDirectory)/exe/*'
+              SourcePath: '$(System.ArtifactsDirectory)/exe'
               azureSubscription: 'PAYG (personal)'
               Destination: 'AzureBlob'
               storage: 'isolineltd'

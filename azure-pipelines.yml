@@ -123,7 +123,7 @@ stages:
   #condition: "and( eq(variables['Build.SourceBranch'], 'refs/heads/master'), succeeded('Build') )"
   jobs:
   - deployment: SingleExe
-    environment: live
+    environment: storamp-live
     strategy:
       runOnce:
         deploy:
@@ -156,7 +156,7 @@ stages:
               changeLogType: 'commitBased'
 
   - deployment: Store
-    environment: live
+    environment: storamp-live
     strategy:
       runOnce:
         deploy:

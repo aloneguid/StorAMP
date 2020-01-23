@@ -57,6 +57,16 @@ stages:
         configuration: '$(buildConfiguration)'
         msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
 
+    - task: CopyFiles@2
+      displayName: 'copy generated .msixupload'
+      inputs:
+        SourceFolder: 'src/StorAmp.WinStore/AppPackages'
+        Contents: '*'
+        TargetFolder: '$(build.artifactstagingdirectory)/appx'
+        CleanTargetFolder: true
+        OverWrite: true
+        flattenFolders: true
+
   - job: SingleExe
     steps:
 
@@ -88,7 +98,7 @@ stages:
       inputs:
         SourceFolder: 'src/StorAmp.Wpf/exepublish'
         Contents: '*'
-        TargetFolder: '$(build.artifactstagingdirectory)'
+        TargetFolder: '$(build.artifactstagingdirectory)/exe'
         CleanTargetFolder: true
         OverWrite: true
         flattenFolders: true
@@ -96,7 +106,9 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'archive .exe'
       inputs:
-        ArtifactName: exe
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/exe'
+        ArtifactName: 'exe'
+        publishLocation: 'Container'
 
 - stage: Release
   dependsOn: ['Build']

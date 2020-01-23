@@ -58,14 +58,21 @@ stages:
         msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
 
     - task: CopyFiles@2
-      displayName: 'copy generated .msixupload'
+      displayName: 'copy generated uwp packages'
       inputs:
-        SourceFolder: 'src/StorAmp.WinStore/AppPackages'
+        SourceFolder: 'AppPackages'
         Contents: '*'
-        TargetFolder: '$(build.artifactstagingdirectory)/appx'
+        TargetFolder: '$(build.artifactstagingdirectory)/uwp'
         CleanTargetFolder: true
         OverWrite: true
         flattenFolders: true
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'archive uwp packages'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/uwp'
+        ArtifactName: 'uwp'
+        publishLocation: 'Container'
 
   - job: SingleExe
     steps:

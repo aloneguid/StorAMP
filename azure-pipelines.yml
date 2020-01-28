@@ -151,7 +151,7 @@ stages:
               target: '$(Build.SourceVersion)'
               tagSource: 'userSpecifiedTag'
               tag: '$(Build.BuildNumber)'
-              assets: '$(Build.ArtifactsDirectory)/exe/*'
+              assets: '$(System.ArtifactsDirectory)/exe/*'
               changeLogCompareToRelease: 'lastFullRelease'
               changeLogType: 'commitBased'
 

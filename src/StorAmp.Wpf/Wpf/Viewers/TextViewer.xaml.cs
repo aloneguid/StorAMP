@@ -17,6 +17,8 @@ namespace StorAmp.Wpf.Wpf.Viewers
       public TextViewer()
       {
          InitializeComponent();
+
+         StorAmp.Wpf.Wpf.AvalonSyntax.Avalon.Init();
       }
 
       public void SaveContentToFile(string filePath)

@@ -5,6 +5,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using StorAmp.Core.Model.AppInsights;
 using StorAmp.Core.ViewModel;
+using StorAmp.Wpf.Wpf.AvalonSyntax;
 using Table = StorAmp.Core.Model.AppInsights.Table;
 using TableColumn = StorAmp.Core.Model.AppInsights.TableColumn;
 
@@ -20,6 +21,8 @@ namespace StorAmp.Wpf.Wpf
       public ApplicationInsightsPanel()
       {
          InitializeComponent();
+
+         Avalon.Init();
 
          QueryEditor.TextArea.TextEntered += TextArea_TextEntered;
       }

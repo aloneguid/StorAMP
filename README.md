@@ -14,7 +14,7 @@ Fast, native Windows application, downloadable from the Windows 10 Store:
 
 <a href='//www.microsoft.com/store/apps/9NKV1D43NLL3?cid=storebadge&ocid=badge'><img src='https://assets.windowsphone.com/85864462-9c82-451e-9355-a3d5f874397a/English_get-it-from-MS_InvariantCulture_Default.png' alt='English badge' style='width: 284px; height: 104px;' width='284' height='104'/></a>
 
-By installing from Windows 10 Store you get automatic updates, sandboxed application (it can't damange your system or write where it's not supposed to - it simply doesn't have permissions to do so) and it just feels nice and safe.
+By installing from Windows 10 Store you get automatic updates, sandboxed application (it can't damage your system or write where it's not supposed to - it simply doesn't have permissions to do so) and it just feels nice and safe.
 
 What can you do with StorAmp? Here is a brief list of features.
 

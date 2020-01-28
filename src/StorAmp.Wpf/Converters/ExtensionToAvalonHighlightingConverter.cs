@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Windows.Data;
 using ICSharpCode.AvalonEdit.Highlighting;
+using StorAmp.Wpf.Wpf.AvalonSyntax;
 
 namespace StorAmp.Wpf.Converters
 {
    public class ExtensionToAvalonHighlightingConverter : IValueConverter
    {
+      public ExtensionToAvalonHighlightingConverter()
+      {
+         Avalon.Init();
+      }
+
       public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
       {
          if(!(value is string ext))

@@ -1,14 +1,14 @@
 # StorAMP
 
-StorAMP is a FREE cloud storage explorer that supports variety of cloud providers:
-- Azure Blob Storage
-- Azure Data Lake (Gen 1 and Gen 2)
-- Azure Data Lake
-- Amazon S3 buckets
-- Azure Databricks DBFS (read-only mode, read-write support is coming)
-- Azure Key Vault
+StorAMP is a **free** and **open-source** cloud storage explorer that supports variety of cloud providers:
+- [Azure Blob Storage](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction)
+- [Azure File Storage](https://docs.microsoft.com/en-gb/azure/storage/files/storage-files-introduction)
+- Azure Data Lake Storage ([Gen 1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview) and [Gen 2](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction))
+- [Amazon S3](https://aws.amazon.com/s3/)
+- [Google Cloud Storage](https://cloud.google.com/storage/)
+- [Azure Key Vault](https://azure.microsoft.com/en-us/services/key-vault/)
 - Local disk
-- Temporary storage
+- Temporary in-memory storage
 
 Fast, native Windows application, downloadable from the Windows 10 Store:
 
@@ -16,28 +16,16 @@ Fast, native Windows application, downloadable from the Windows 10 Store:
 
 By installing from Windows 10 Store you get automatic updates, sandboxed application (it can't damage your system or write where it's not supposed to - it simply doesn't have permissions to do so) and it just feels nice and safe.
 
-What can you do with StorAmp? Here is a brief list of features.
+![](img/screenshot.png)
 
-## Fast Navigation Experience
-You can view any storage account folders and files in a Norton Commander style view. It's blazing fast unlike any Electron based viewers.
+Main features:
 
-## Viewing and Editing Files Inline
-StorAMP allows you to view files inline, without downloading them locally. Just press the "view" button on the toolbar. In addition to that, you can edit the file as well.
-
-![](img/viewedit.gif)
-
-It supports syntax highlighting for most popular file formats i.e. markdown, json, xml, css, html, most programming languages (C#, Java, JavaScript (not sure it's a programming language), Scala and many others). If you like us to support more, just raise an issue here.
-
-## Drag and Drop from Windows Explorer to Upload Files
-
-It's as easy as that, just drag a file or set of files to upload them to the storage.
-
-![](img/explorer-to-storage.gif)
-
-## Drag and Drop between storage panes
-
-Same goes for copying files between storage accounts - simply drag'n'drop.
-
-![](img/copy-between-accounts.gif)
-
-Want to suggest another feature? Please raise an issue here.
+- Native and fast. Uses about 5 times less RAM and is about 10 times faster than competitors.
+- Ergonomic. All the operations are as fast and click-less as possible, based on personal experience and frustration with competitive UIs.
+- Unified Interface. All storage providers feel and look the same, in terms of visual looks, operations and speed.
+- Built-in editors for most text formats (json, yaml, csv, txt, xml, cs, java, rb, php etc.) that open files instantly in one click, and allow to edit and save in a single click.
+- Built-in editors support reformatting badly formatted json and xml files.
+- Built-in video player that understands most of the video formats (mp4, wmv etc.)
+- Extra customisations specific to concrete cloud storage, i.e.:
+  - Working with Azure Blob Storage adds features like viewing access tier, lease, performing leasing operations, changing access, getting shared access signature and so on.
+- Supports automatic discovery of Microsoft Azure resources.

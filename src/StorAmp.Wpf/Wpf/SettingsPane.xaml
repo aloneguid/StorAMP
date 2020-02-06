@@ -9,6 +9,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:StorAmp.Core.ViewModel;assembly=StorAmp.Core"
     xmlns:xx="clr-namespace:StorAmp.Wpf.MarkupExtensions"
+    d:DataContext="{d:DesignInstance vm:SettingsViewModel,
+                                     IsDesignTimeCreatable=True}"
     d:DesignHeight="450"
     d:DesignWidth="200"
     mc:Ignorable="d">

@@ -20,12 +20,12 @@ By installing from Windows 10 Store you get automatic updates, sandboxed applica
 
 Main features:
 
-- Native and fast. Uses about 5 times less RAM and is about 10 times faster than competitors.
-- Ergonomic. All the operations are as fast and click-less as possible, based on personal experience and frustration with competitive UIs.
-- Unified Interface. All storage providers feel and look the same, in terms of visual looks, operations and speed.
-- Built-in editors for most text formats (json, yaml, csv, txt, xml, cs, java, rb, php etc.) that open files instantly in one click, and allow to edit and save in a single click.
-- Built-in editors support reformatting badly formatted json and xml files.
-- Built-in video player that understands most of the video formats (mp4, wmv etc.)
-- Extra customisations specific to concrete cloud storage, i.e.:
+- **Native and fast.** Uses about 5 times less RAM and is about 10 times faster than competitors.
+- **Ergonomic.** All the operations are as fast and click-less as possible, based on personal experience and frustration with competitive UIs.
+- **Unified Interface.** All storage providers feel and look the same, in terms of visual looks, operations and speed.
+- **Built-in editors** for most text formats (json, yaml, csv, txt, xml, cs, java, rb, php etc.) that open files instantly in one click, and allow to edit and save in a single click.
+- Built-in editors support **reformatting** badly formatted json and xml files.
+- **Built-in video player** that understands most of the video formats (mp4, wmv etc.)
+- **Extra customisations** specific to concrete cloud storage, i.e.:
   - Working with Azure Blob Storage adds features like viewing access tier, lease, performing leasing operations, changing access, getting shared access signature and so on.
-- Supports automatic discovery of Microsoft Azure resources.
+- Supports automatic discovery of **Microsoft Azure** resources.

@@ -35,8 +35,7 @@ namespace StorAmp.Core.ViewModel
 
       private void RestoreTheme()
       {
-         //string baseColor = GlobalSettings.Default.ThemeBaseColor;
-         string baseColor = "Light";   //no support for dark in code editor
+         string baseColor = GlobalSettings.Default.ThemeBaseColor;
          string accent = GlobalSettings.Default.ThemeAccent;
 
          ActiveBaseColor = baseColor;

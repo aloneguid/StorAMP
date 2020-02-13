@@ -21,6 +21,7 @@ variables:
 stages:
 - stage: Build
   jobs:
+
   - job: UWP
     steps:
     - task: NuGetToolInstaller@1
@@ -35,28 +36,20 @@ stages:
         outputDirectory: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
         removeSecureFile: true
 
-    - task: petersendev.dotnet-global-tool-installer.DotnetGlobalToolInstaller.DotnetGlobalToolInstaller@0
-      displayName: 'install housework'
+    - task: VersionAPPX@2
       inputs:
-        name: housework
-
-    - task: PowerShell@2
-      displayName: 'hw authoring'
-      inputs:
-        targetType: 'inline'
-        script: |
-          housework author src/*.csproj -s build.ini -r
-          
-          housework author src/*.appxmanifest -s build.ini -r -v
-          
-          housework setbuildnumber %Version% -s build.ini -v
+        Path: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
+        VersionNumber: '$(v)'
+        InjectVersion: False
+        VersionRegex: '(0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(\.(0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])){3}'
+        OutputVersion: 'OutputedVersion'
 
     - task: VSBuild@1
       inputs:
-        platform: 'x86'
         solution: '$(solution)'
+        msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload /p:Version=$(v) /p:FileVersion=$(v)'
+        platform: 'x86'
         configuration: '$(buildConfiguration)'
-        msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
 
     - task: CopyFiles@2
       displayName: 'copy generated uwp packages'
@@ -77,7 +70,7 @@ stages:
 
   - job: SingleExe
     steps:
-    
+
     - task: PowerShell@2
       inputs:
         targetType: 'inline'

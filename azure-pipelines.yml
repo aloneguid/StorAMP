@@ -77,8 +77,11 @@ stages:
 
   - job: SingleExe
     steps:
-
-    - script: echo ##vso[build.updatebuildnumber]$(v).0
+    
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'Write-Host "##vso[build.updatebuildnumber]$(v).0"'
 
     - task: DotNetCoreCLI@2
       displayName: 'generate .exe'

@@ -78,7 +78,7 @@ stages:
   - job: SingleExe
     steps:
 
-    - script: echo "##vso[build.updatebuildnumber]$(v).0"
+    - script: echo ##vso[build.updatebuildnumber]$(v).0
 
     - task: DotNetCoreCLI@2
       displayName: 'generate .exe'

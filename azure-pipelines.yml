@@ -24,19 +24,9 @@ stages:
 
   - job: UWP
     steps:
-    - task: NuGetToolInstaller@1
-
-    - task: NuGetCommand@2
-      inputs:
-        restoreSolution: '$(solution)'
-
-    - task: SecureFiles@1
-      inputs:
-        secureFileName: 'store.pfx'
-        outputDirectory: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
-        removeSecureFile: true
 
     - task: VersionAPPX@2
+      displayName: 'set appx manifest version'
       inputs:
         Path: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
         VersionNumber: '$(v)'
@@ -44,7 +34,23 @@ stages:
         VersionRegex: '(0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(\.(0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])){3}'
         OutputVersion: 'OutputedVersion'
 
+    - task: NuGetToolInstaller@1
+      displayName: 'install nuget'
+
+    - task: NuGetCommand@2
+      displayName: 'restore packages'
+      inputs:
+        restoreSolution: '$(solution)'
+
+    - task: SecureFiles@1
+      displayName: 'get store certificate'
+      inputs:
+        secureFileName: 'store.pfx'
+        outputDirectory: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
+        removeSecureFile: true
+
     - task: VSBuild@1
+      displayName: 'build appx'
       inputs:
         solution: '$(solution)'
         msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload /p:Version=$(v) /p:FileVersion=$(v)'
@@ -72,6 +78,7 @@ stages:
     steps:
 
     - task: PowerShell@2
+      displayName: 'set build number to $(v)'
       inputs:
         targetType: 'inline'
         script: 'Write-Host "##vso[build.updatebuildnumber]$(v).0"'

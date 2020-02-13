@@ -101,6 +101,14 @@ stages:
         OverWrite: true
         flattenFolders: true
 
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(System.ArtifactsDirectory)'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(build.artifactstagingdirectory)/exe/StorAmp-$(v).zip'
+        replaceExistingArchive: true
+
     - task: PublishBuildArtifacts@1
       displayName: 'archive .exe'
       inputs:
@@ -125,14 +133,6 @@ stages:
               downloadType: 'single'
               artifactName: 'exe'
               downloadPath: '$(System.ArtifactsDirectory)'
-
-          - task: ArchiveFiles@2
-            inputs:
-              rootFolderOrFile: '$(System.ArtifactsDirectory)'
-              includeRootFolder: false
-              archiveType: 'zip'
-              archiveFile: '$(System.ArtifactsDirectory)/StorAmp-$(v).zip'
-              replaceExistingArchive: true
 
           - task: AzureFileCopy@3
             inputs:

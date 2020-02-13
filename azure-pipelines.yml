@@ -11,6 +11,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
+  v: '1.6.2'
   solution: 'src/StorAmp.sln'
   buildPlatform: 'x86'
   buildConfiguration: 'Release'
@@ -77,26 +78,14 @@ stages:
   - job: SingleExe
     steps:
 
-    - task: petersendev.dotnet-global-tool-installer.DotnetGlobalToolInstaller.DotnetGlobalToolInstaller@0
-      displayName: 'install hw'
-      inputs:
-        name: housework
-
-    - task: PowerShell@2
-      displayName: 'hw authoring'
-      inputs:
-        targetType: 'inline'
-        script: |
-          housework author src/*.csproj -s build.ini -r
-          
-          housework setbuildnumber %Version% -s build.ini -v
+    - script: echo "##vso[build.updatebuildnumber]$(v)"
 
     - task: DotNetCoreCLI@2
       displayName: 'generate .exe'
       inputs:
         command: 'publish'
         publishWebProjects: false
-        arguments: '-c $(BuildConfiguration) -r $(PublishRuntime) -p:PublishSingleFile=true -o:exepublish'
+        arguments: '-c $(BuildConfiguration) -r $(PublishRuntime) -p:PublishSingleFile=true -o:exepublish /p:Version=$(v) /p:FileVersion=$(v)'
         zipAfterPublish: false
         workingDirectory: 'src/StorAmp.Wpf'
 
@@ -134,6 +123,14 @@ stages:
               downloadType: 'single'
               artifactName: 'exe'
               downloadPath: '$(System.ArtifactsDirectory)'
+
+          - task: ArchiveFiles@2
+            inputs:
+              rootFolderOrFile: '$(System.ArtifactsDirectory)'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(System.ArtifactsDirectory)/StorAmp-$(v).zip'
+              replaceExistingArchive: true
 
           - task: AzureFileCopy@3
             inputs:

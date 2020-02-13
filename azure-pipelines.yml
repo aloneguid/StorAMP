@@ -141,7 +141,7 @@ stages:
               Destination: 'AzureBlob'
               storage: 'isolineltd'
               ContainerName: 'storamp'
-
+    
           - task: GitHubRelease@1
             inputs:
               gitHubConnection: 'aloneguid'
@@ -149,10 +149,11 @@ stages:
               action: 'create'
               target: '$(Build.SourceVersion)'
               tagSource: 'userSpecifiedTag'
-              tag: '$(Build.BuildNumber)'
-              assets: '$(System.ArtifactsDirectory)/exe/*'
+              tag: '$(v)'
+              assets: '$(System.ArtifactsDirectory)/exe/*.zip'
               changeLogCompareToRelease: 'lastFullRelease'
-              changeLogType: 'commitBased'
+              changeLogType: 'issueBased'
+              changeLogLabels: 
 
   - deployment: Store
     environment: storamp-live

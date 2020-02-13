@@ -11,6 +11,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
+  v: '1.6.2'
   solution: 'src/StorAmp.sln'
   buildPlatform: 'x86'
   buildConfiguration: 'Release'
@@ -20,42 +21,40 @@ variables:
 stages:
 - stage: Build
   jobs:
+
   - job: UWP
     steps:
+
+    - task: VersionAPPX@2
+      displayName: 'set appx manifest version'
+      inputs:
+        Path: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
+        VersionNumber: '$(v).0'
+        InjectVersion: True
+        OutputVersion: 'OutputedVersion'
+
     - task: NuGetToolInstaller@1
+      displayName: 'install nuget'
 
     - task: NuGetCommand@2
+      displayName: 'restore packages'
       inputs:
         restoreSolution: '$(solution)'
 
     - task: SecureFiles@1
+      displayName: 'get store certificate'
       inputs:
         secureFileName: 'store.pfx'
         outputDirectory: '$(System.DefaultWorkingDirectory)/src/StorAmp.WinStore'
         removeSecureFile: true
 
-    - task: petersendev.dotnet-global-tool-installer.DotnetGlobalToolInstaller.DotnetGlobalToolInstaller@0
-      displayName: 'install housework'
-      inputs:
-        name: housework
-
-    - task: PowerShell@2
-      displayName: 'hw authoring'
-      inputs:
-        targetType: 'inline'
-        script: |
-          housework author src/*.csproj -s build.ini -r
-          
-          housework author src/*.appxmanifest -s build.ini -r -v
-          
-          housework setbuildnumber %Version% -s build.ini -v
-
     - task: VSBuild@1
+      displayName: 'build appx'
       inputs:
-        platform: 'x86'
         solution: '$(solution)'
+        msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload /p:Version=$(v) /p:FileVersion=$(v)'
+        platform: 'x86'
         configuration: '$(buildConfiguration)'
-        msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
 
     - task: CopyFiles@2
       displayName: 'copy generated uwp packages'
@@ -77,26 +76,18 @@ stages:
   - job: SingleExe
     steps:
 
-    - task: petersendev.dotnet-global-tool-installer.DotnetGlobalToolInstaller.DotnetGlobalToolInstaller@0
-      displayName: 'install hw'
-      inputs:
-        name: housework
-
     - task: PowerShell@2
-      displayName: 'hw authoring'
+      displayName: 'set build number to $(v)'
       inputs:
         targetType: 'inline'
-        script: |
-          housework author src/*.csproj -s build.ini -r
-          
-          housework setbuildnumber %Version% -s build.ini -v
+        script: 'Write-Host "##vso[build.updatebuildnumber]$(v).0"'
 
     - task: DotNetCoreCLI@2
       displayName: 'generate .exe'
       inputs:
         command: 'publish'
         publishWebProjects: false
-        arguments: '-c $(BuildConfiguration) -r $(PublishRuntime) -p:PublishSingleFile=true -o:exepublish'
+        arguments: '-c $(BuildConfiguration) -r $(PublishRuntime) -p:PublishSingleFile=true -o:exepublish /p:Version=$(v) /p:FileVersion=$(v)'
         zipAfterPublish: false
         workingDirectory: 'src/StorAmp.Wpf'
 
@@ -109,6 +100,14 @@ stages:
         CleanTargetFolder: true
         OverWrite: true
         flattenFolders: true
+
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(System.ArtifactsDirectory)'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(build.artifactstagingdirectory)/exe/StorAmp-$(v).zip'
+        replaceExistingArchive: true
 
     - task: PublishBuildArtifacts@1
       displayName: 'archive .exe'

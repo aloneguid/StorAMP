@@ -43,61 +43,8 @@ namespace CloudExplorer.Wpf
          ServiceLocator.Register<ISystemService>(new SystemService());
 
          Version version = GetType().FileVersion();
-         string printVersion;
-#if DEBUG
-         printVersion = "Next";
-#else
-         printVersion = $"{version.Major}.{version.Minor}.{version.Build}";
-#endif
+         string printVersion = $"{version.Major}.{version.Minor}.{version.Build}";
          Title = string.Format(Res.WindowTitle, Res.ProductName, printVersion);
-
-         CheckInstallStatusAsync().Forget();
-         CheckReleaseNotesShownAsync().Forget();
-      }
-
-      private async Task CheckInstallStatusAsync()
-      {
-         DateTime installDate = GlobalSettings.Default.InstallDate;
-         if(installDate == DateTime.MinValue)
-         {
-            GlobalSettings.Default.InstallDate = DateTime.UtcNow;
-         }
-         else
-         {
-            double daysUsed = (DateTime.UtcNow - GlobalSettings.Default.InstallDate).TotalDays;
-
-            if(daysUsed > 5 && !GlobalSettings.Default.ReviewLeft)
-            {
-               if(await ServiceLocator.GetInstance<IDialogService>().AskYesNoAsync(
-                  "Leave me a review!",
-                  $"You've been using {Res.ProductName} for quite a while, {(int)daysUsed} day(s) now. It's a completely free product and leaving a review will help us motivated to work on this completely for free. Would you like to leave us a review now?"))
-               {
-                  //const string url = "https://www.microsoft.com/store/apps/9NKV1D43NLL3";
-                  const string url = "ms-windows-store://pdp/?ProductId=9NKV1D43NLL3";
-
-                  var p = new Process();
-                  p.StartInfo.UseShellExecute = true;
-                  p.StartInfo.FileName = url;
-                  p.Start();
-
-               }
-
-               GlobalSettings.Default.ReviewLeft = true;
-            }
-         }
-      }
-
-      private async Task CheckReleaseNotesShownAsync()
-      {
-         string currentVersion = GetType().FileVersion().ToString();
-
-         if(GlobalSettings.Default.ReleaseNotesLastShownForVersion != currentVersion)
-         {
-            await Task.Delay(TimeSpan.FromSeconds(5));
-            await ShowReleaseNotesAsync();
-         }
-
-         GlobalSettings.Default.ReleaseNotesLastShownForVersion = currentVersion;
       }
 
       private MainViewModel ViewModel => (MainViewModel)DataContext;
@@ -143,14 +90,9 @@ namespace CloudExplorer.Wpf
          EventLog.LogEvent("openFlyout", "{name}", "about");
       }
 
-      private async Task ShowReleaseNotesAsync()
-      {
-         await this.ShowDialogAsync("Release Notes", new ReleaseNotes(), null, null);
-      }
-
       private void ShowReleaseNotes_Click(object sender, RoutedEventArgs e)
       {
-         ShowReleaseNotesAsync().Forget();
+         "https://github.com/aloneguid/StorAMP/releases".ShellOpen();
 
          EventLog.LogEvent("openFlyout", "{name}", "releaseNotes");
       }

@@ -10,7 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\GitVersion.yml = ..\GitVersion.yml
 		..\privacy_policy.md = ..\privacy_policy.md
 		..\README.md = ..\README.md
-		release.ps1 = release.ps1
 		StorAmp.Core\releasenotes.txt = StorAmp.Core\releasenotes.txt
 	EndProjectSection
 EndProject

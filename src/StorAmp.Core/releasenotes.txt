@@ -1,4 +1,6 @@
-﻿v1.6.2 (10/12/2019)
+﻿since v1.6.3 release notes are maintained on github - https://github.com/aloneguid/StorAMP/releases
+
+v1.6.2 (10/12/2019)
 - new feature: azure blob storage supports connections to local emulator
 
 v1.6.1 (29/11/2019)

@@ -95,7 +95,6 @@
       <PackageReference Include="Extended.Wpf.Toolkit" Version="3.7.0" />
       <PackageReference Include="Gu.Wpf.Media" Version="0.5.0.2" />
       <PackageReference Include="Humanizer.Core" Version="2.7.9" />
-      <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
       <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0605" />
       <PackageReference Include="MahApps.Metro.SimpleChildWindow" Version="2.0.0-alpha0031" />
       <PackageReference Include="Serilog" Version="2.9.0" />
